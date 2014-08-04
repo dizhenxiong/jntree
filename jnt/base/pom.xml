@@ -20,6 +20,7 @@
         <module>jnt-post-service</module>
         <module>jnt-tree-core</module>
         <module>jnt-tree-service</module>
+        <module>jnt-tree-client</module>
     </modules>
 
 
@@ -32,6 +33,7 @@
         <aspectj.version>1.6.8</aspectj.version>
         <aopalliance.version>1.0</aopalliance.version>
         <cglib.version>2.2</cglib.version>
+        <tuscany.version>2.0</tuscany.version>
     </properties>
 
     <build>
@@ -80,7 +82,43 @@
     </build>
 
     <dependencies>
+        <!--                        SCA                              -->
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-sca-api</artifactId>
+            <version>2.0</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-sca-api</artifactId>
+            <version>${tuscany.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-base-runtime</artifactId>
+            <version>${tuscany.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-implementation-spring-runtime</artifactId>
+            <version>${tuscany.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-binding-rmi</artifactId>
+            <version>${tuscany.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-binding-rmi-runtime</artifactId>
+            <version>${tuscany.version}</version>
+        </dependency>
+
+        <!--                        SCA                              -->
         <!-- Apache Commons-->
         <dependency>
             <groupId>commons-collections</groupId>
