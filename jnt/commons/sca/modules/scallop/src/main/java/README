@@ -1,0 +1,23 @@
+
+README
+
+% kevinsong 
+% 2012.9.13
+
+scallop-center need a database named scallop and a table named resources
+
+The following is the sql statement of table resources
+
+CREATE TABLE `resources` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(56) DEFAULT NULL,
+  `resource` varchar(56) DEFAULT NULL,
+  `strategy` varchar(56) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+
+the resource field structure should as below line
+failover:(10.10.82.102:8089,10.10.82.103:8089)?max_fails=2&fail_interval=30000;
+
+

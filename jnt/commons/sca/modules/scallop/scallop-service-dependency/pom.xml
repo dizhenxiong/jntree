@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+	<groupId>com.lenovo.vctl.sca.scallop</groupId>
+	<artifactId>scallop</artifactId>
+	<version>2.0</version>
+  </parent>
+  <groupId>com.lenovo.vctl.sca.scallop</groupId>
+  <artifactId>scallop-service-dependency</artifactId>
+  <version>2.0</version>
+  <dependencies>
+		
+		<dependency>
+			<groupId>com.lenovo.vctl.sca.scallop</groupId>
+			<artifactId>scallop-base-runtime</artifactId>
+			<version>${scallop.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lenovo.vctl.sca.scallop</groupId>
+			<artifactId>scallop-assembly-xsd</artifactId>
+			<version>${scallop.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lenovo.vctl.sca.scallop</groupId>
+			<artifactId>scallop-host-rmi</artifactId>
+			<version>${scallop.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lenovo.vctl.sca.scallop</groupId>
+			<artifactId>scallop-binding-rmi</artifactId>
+			<version>${scallop.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lenovo.vctl.sca.scallop</groupId>
+			<artifactId>scallop-binding-rmi-runtime</artifactId>
+			<version>${scallop.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tuscany.sca</groupId>
+			<artifactId>tuscany-sca-api</artifactId>
+			<version>${tuscany.version}</version>
+		</dependency>
+		
+		<!-- service tuscany need  
+
+		<dependency>
+			<groupId>scallop</groupId>
+			<artifactId>scallop-tuscany-pom</artifactId>
+			<version>${scallop.version}</version>
+			<type>pom</type>
+		</dependency>
+  		
+  		
+  		-->
+  		
+		<dependency>
+			<groupId>org.apache.tuscany.sca</groupId>
+			<artifactId>tuscany-implementation-spring-runtime</artifactId>
+			<version>${tuscany.version}</version>
+		</dependency>
+  
+  		<dependency>
+			<groupId>com.lenovo.vctl.sca</groupId>
+			<artifactId>vctl-sca-client</artifactId>
+			<version>${scaclient.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>tuscany-base-runtime</artifactId>
+					<groupId>org.apache.tuscany.sca</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+  </dependencies>
+
+  
+</project>

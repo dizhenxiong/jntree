@@ -18,6 +18,7 @@
         <module>jnt-user-service</module>
         <module>jnt-post-core</module>
         <module>jnt-post-service</module>
+        <module>jnt-tree-core</module>
         <module>jnt-tree-service</module>
     </modules>
 

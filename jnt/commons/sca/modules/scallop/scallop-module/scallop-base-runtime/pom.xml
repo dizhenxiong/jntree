@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>scallop-module</artifactId>
+    <groupId>com.lenovo.vctl.sca.scallop</groupId>
+    <version>2.0</version>
+  </parent>
+  <groupId>com.lenovo.vctl.sca.scallop</groupId>
+  <artifactId>scallop-base-runtime</artifactId>
+  <version>2.0</version>
+
+      <dependencies>
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-domain-node</artifactId>
+            <version>${tuscany.version}</version>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>tuscany-assembly-xsd</artifactId>
+            		<groupId>org.apache.tuscany.sca</groupId>
+            	</exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-implementation-web-runtime</artifactId>
+            <version>${tuscany.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-launcher</artifactId>
+            <version>${tuscany.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-sca-client-impl</artifactId>
+            <version>${tuscany.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-host-jetty</artifactId>
+            <version>${tuscany.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tuscany.sca</groupId>
+                    <artifactId>tuscany-core-spi</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>jetty</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>jetty-util</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-policy-security</artifactId>
+            <version>${tuscany.version}</version>
+        </dependency>
+
+<!-- All the scdl modules  -->
+
+        <dependency>
+            <groupId>com.lenovo.vctl.sca.scallop</groupId>
+            <artifactId>scallop-binding-rmi</artifactId>
+            <version>${scallop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-binding-ws</artifactId>
+            <version>${tuscany.version}</version>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>tuscany-assembly-xsd</artifactId>
+            		<groupId>org.apache.tuscany.sca</groupId>
+            	</exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-implementation-java</artifactId>
+            <version>${tuscany.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tuscany.sca</groupId>
+            <artifactId>tuscany-implementation-spring</artifactId>
+            <version>${tuscany.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lenovo.vctl.sca.scallop</groupId>
+            <artifactId>scallop-assembly-xsd</artifactId>
+            <version>${scallop.version}</version>
+        </dependency>
+     
+
+    </dependencies>  
+  
+</project>

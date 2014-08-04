@@ -1,0 +1,16 @@
+<composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912"
+	xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.1" 
+	targetNamespace="http://www.lenovo.com.cn" name="hello">
+
+
+    <component name="HelloworldComponent" autowire="true">
+        <implementation.java class="scallop.hello.HelloworldImpl" />
+		<service name="Helloworld">
+    		<interface.java interface="scallop.hello.Helloworld"/>
+    		<tuscany:binding.rmi uri="rmi://localhost:8095/HelloRMIService" registryName="hello" />
+		</service>
+    </component>
+
+  
+    
+</composite>

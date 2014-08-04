@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+	<groupId>com.lenovo.vctl.sca.scallop</groupId>
+	<artifactId>scallop</artifactId>
+	<version>2.0</version>
+  </parent>
+  <groupId>com.lenovo.vctl.sca.scallop</groupId>
+  <artifactId>scallop-module</artifactId>
+  <version>2.0</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>scallop-assembly-xsd</module>
+  	<module>scallop-base-runtime</module>
+  	<module>scallop-binding-rmi</module>
+  	<module>scallop-binding-rmi-runtime</module>
+  	<module>scallop-center</module>
+  	<module>scallop-core</module>
+  	<module>scallop-host-rmi</module>
+  </modules>
+</project>

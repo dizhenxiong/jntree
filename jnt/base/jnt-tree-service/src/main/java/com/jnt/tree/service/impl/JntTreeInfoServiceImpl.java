@@ -15,7 +15,4 @@ public class JntTreeInfoServiceImpl extends DalBaseServiceImpl<JntTreeInfo> impl
     public Class<JntTreeInfo> getEntityClass() {
         return  JntTreeInfo.class;
     }
-
-
-
 }

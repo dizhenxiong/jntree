@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<project name="center" basedir="/data/code/Server/commons/sca/modules/scallop" default="deploy-center">
+	<property name="centerbase.dir" value="${basedir}/scallop-module" />
+	<property name="center.dir" value="/data" />
+
+	<target name="clean-center">
+		<delete verbose="true">
+			<fileset dir="${center.dir}/scallop-center/classes">
+			</fileset>
+			<fileset dir="${center.dir}/scallop-center/lib">
+			</fileset>
+		</delete>
+	</target>
+
+	<!-- example: ant -f /opt/sns/trunk/deploy_center.xml deploy-center -->
+	<target name="deploy-center" depends="clean-center">
+		<untar src="${centerbase.dir}/scallop-center/target/scallop-center-dist.tar.gz" 
+			dest="${center.dir}/scallop-center" compression="gzip">
+		</untar>
+	</target>
+
+</project>

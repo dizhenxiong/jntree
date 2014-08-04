@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Resource">
+
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+  <typeAlias alias="Resource" type="scallop.center.dao.Resource"/>
+
+  <!-- Result maps describe the mapping between the columns returned
+       from a query, and the class properties.  A result map isn't
+       necessary if the columns (or aliases) match to the properties 
+       exactly. -->
+  <resultMap id="ResourceResult" class="Resource">
+    <result property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="resource" column="resource"/>
+    <result property="strategy" column="strategy"/>
+  </resultMap>
+
+  <select id="selectAllResources" resultMap="ResourceResult">
+    select * from resources
+  </select>
+
+  <select id="selectResourceByName" parameterClass="String" resultMap="ResourceResult">
+    select id, name, resource, strategy
+    from resources
+    where name = #name#
+  </select>
+   
+  <insert id="insertResource" parameterClass="Resource">
+    insert into resources (
+      name,
+      resource,
+      strategy
+    values (
+      #name#, #resource#, #strategy#
+    )
+    <selectKey resultClass="int" keyProperty="id">  
+		<![CDATA[SELECT LAST_INSERT_ID() AS ID ]]> 
+	</selectKey>
+  </insert>
+
+  <update id="updateResource" parameterClass="Resource">
+    update resources set
+      name = #name#,
+      resource = #resource#,
+      strategy = #strategy#
+    where
+      id = #id#
+  </update>
+
+  <delete id="deleteResourceById" parameterClass="int">
+    delete from resources where id = #id#
+  </delete>
+
+</sqlMap>

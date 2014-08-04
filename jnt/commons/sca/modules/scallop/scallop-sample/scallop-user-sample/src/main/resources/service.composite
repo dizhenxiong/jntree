@@ -1,0 +1,17 @@
+<composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912"
+	xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.1"
+	targetNamespace="http://www.lenovo.com.cn" name="service">
+
+	<component name="UserComponent">
+		<implementation.spring
+			location="applicationContext-server.xml" />
+
+		<service name="UserService">
+			<interface.java interface="scallop.user.UserService" />
+			<tuscany:binding.rmi uri="rmi://localhost:8099/UserRmiService"/>
+		</service>
+		<reference name="helloWorldService">
+			<tuscany:binding.rmi  registryName="hello" serviceName="HelloRMIService" />
+		</reference>
+	</component>
+</composite>
