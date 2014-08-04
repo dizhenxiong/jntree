@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+
+      <cache>
+          <datasource name="listregion" timeout="5000" port="11210" server="user1.mem.vctal.lenovo.com" maxActive="80" maxIdle="30"    maxWait="1000" />
+          <datasource name="objregion"  timeout="5000" port="11211" server="user1.mem.vctal.lenovo.com" maxActive="80" maxIdle="30"    maxWait="1000" />
+          <datasource name="mapregion"  timeout="5000" port="11212" server="user1.mem.vctal.lenovo.com" maxActive="80" maxIdle="30"    maxWait="1000" />
+          <datasource name="default"    timeout="5000" port="11212" server="user1.mem.vctal.lenovo.com" maxActive="18" maxIdle="18"    maxWait="-1" />
+          
+      </cache>
+
+      <regions>
+          <region name="global"
+                  listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                  strategyClass="com.sohu.sns.memcahced.route.strategy.DefaultStrategy">
+              <keyPattern value="[0-9A-Za-z]$" datasource="default" />
+          </region>
+
+		<region name="com.lenovo.vctl.apps.user.model.VctlUser" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"  strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource="objregion"/>
+		</region>
+		
+		
+
+      </regions>
+</root>
+

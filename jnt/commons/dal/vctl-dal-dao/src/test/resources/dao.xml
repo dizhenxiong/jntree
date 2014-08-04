@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="GB2312"?>
+<dal>
+	<default>
+		<dbStrategy name=""
+			clazz="com.lenovo.vctl.dal.dao.route.strategy.DefaultStrategy">
+			<pattern value="[0-9]$" group="g2" />
+		</dbStrategy>
+		<listenerClass className="" />
+		<idCenterDS ds="idCenterDS" />   <!-- 缺省IdCenter使用的数据源配置 -->
+	</default>
+	<route>
+		<!-- 在一个侦听器中实现before after -->
+		<object name="com.lenovo.vctl.apps.user.model.VctlUser" listenerClass="com.lenovo.vctl.dal.dao.listener.DefaultListener"
+			strategyProperty="userId">
+			<dbStrategy name=""
+				clasz="com.lenovo.vctl.dal.dao.route.strategy.DefaultStrategy">
+				<pattern value="[0-9]$" group="g2" />
+			</dbStrategy>
+		</object>
+
+
+	</route>
+	<bak>
+			<object name="com.lenovo.vctl.apps.user.model.VctlUser" listenerClass="com.lenovo.vctl.dal.dao.listener.DefaultListener"
+			strategyProperty="id">
+			<list name="Animal_Id_All"
+				sqlitem="select id from animals where status = ? order by rank_required,gold_coin asc"
+				sqlType="hsql" keyProperty="status" valueProperty="id" update="true" />
+			<list name="Animal_Id_Rank"
+				sqlitem="select id from animals where rank_required = ? and status = ? order by id desc"
+				sqlType="hsql" keyProperty="rank,status" valueProperty="id" update="true" />
+			<map name="Animal_Id_Map" sqlitem="select id from animals where instance_name = ?"
+				sqlType="hsql" keyProperty="instanceName" valueProperty="id" />
+			<dbStrategy name=""
+				clasz="com.sohu.sns.dal.route.strategy.DefaultStrategy">
+				<pattern value="[0-9]$" group="g1" />
+			</dbStrategy>
+		</object>
+	</bak>
+</dal>
+

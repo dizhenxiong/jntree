@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GB2312"?>
+<dal>
+    <default>
+        <dbStrategy name="" clazz="com.sohu.sns.dal.route.strategy.DefaultStrategy">
+            <pattern value="[0-9A-Za-z]$" group="g1"/>
+        </dbStrategy>
+        <listenerClass className=""/>
+        <idCenterDS ds="idCenterDS"/>
+    </default>
+    <route>
+
+        <object name="com.lenovo.vctl.apps.model.Material" listenerClass="" strategyProperty="">
+            <list name="USER_MATERIAL_ID_LIST"
+                  sqlitem="select id from material where user_id=? "
+                  sqlType="hsql" keyProperty="userId" valueProperty="id" update="true"/>
+            <list name="USER_ALLMATERIAL_ID_LIST"
+                  sqlitem="select id from material where 1=? "
+                  sqlType="hsql" keyProperty="userId" valueProperty="id" update="true"/>
+
+            <dbStrategy name="" clasz="com.lenovo.vctl.dal.dao.route.strategy.DefaultStrategy">
+                <pattern value="[0-9A-Za-z]$" group="g1"/>
+            </dbStrategy>
+        </object>
+
+
+    </route>
+</dal>

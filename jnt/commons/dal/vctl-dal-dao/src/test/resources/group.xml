@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="GB2312"?>
+<root>
+	<datasources>
+		<ds name="idCenterDS" 
+			driverClassName="com.mysql.jdbc.Driver" 
+			url="jdbc:mysql://user.db.vctal.lenovo.com:3306/vctal_user"
+			username="sns" 
+			password="sohu"
+			maxActive="" 
+			maxIdle="" 
+			maxWait="" 
+		/>
+		<ds name="vctluser" 
+			driverClassName="com.mysql.jdbc.Driver" 
+			url="jdbc:mysql://user.db.vctal.lenovo.com:3306/vctal_user"
+			username="vctalUser" 
+			password="vctalUser123"
+			maxActive="" 
+			maxIdle="" 
+			maxWait="" 
+		/>
+
+	</datasources>
+	<groups>
+		<group name="g2" master="vctluser" salve="vctluser"/>	
+	</groups>
+
+</root>
+

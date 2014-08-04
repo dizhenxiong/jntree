@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+
+    <cache>
+        <datasource name="listregion" timeout="5000" port="11213" server="user2.mem.vctal.lenovo.com" maxActive="80"
+                    maxIdle="30" maxWait="1000"/>
+        <datasource name="objregion" timeout="5000" port="11214" server="user2.mem.vctal.lenovo.com" maxActive="80"
+                    maxIdle="30" maxWait="1000"/>
+        <datasource name="mapregion" timeout="5000" port="11215" server="user2.mem.vctal.lenovo.com" maxActive="80"
+                    maxIdle="30" maxWait="1000"/>
+        <datasource name="default" timeout="5000" port="11215" server="user2.mem.vctal.lenovo.com" maxActive="18"
+                    maxIdle="18" maxWait="-1"/>
+        <datasource name="memcacheq" timeout="5000" port="11218" server="memcacheq1.vctal.lenovo.com" maxActive="80"
+                    maxIdle="30" maxWait="1000"/>
+        <datasource name="call_report" timeout="5000" port="11218" server="memcacheq2.vctal.lenovo.com" maxActive="100"
+                    maxIdle="18" maxWait="3000"/>
+
+
+    </cache>
+
+    <regions>
+        <region name="noticeq" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9A-Za-z]$" datasource="memcacheq"/>
+        </region>
+        <!-- 发送短信队列 -->
+        <region name="shortmsgq" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9A-Za-z]$" datasource="memcacheq"/>
+        </region>
+
+        <!-- 发送邮件队列 -->
+        <region name="mailq" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9A-Za-z]$" datasource="memcacheq"/>
+        </region>
+        <!-- 交流集备份队列  -->
+        <region name="recordbkq"  listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                   strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9A-Za-z]$" datasource="memcacheq"/>
+        </region>
+        <!-- 历史记录限制队列  -->
+        <region name="historylmtq"  listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                   strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9A-Za-z]$" datasource="memcacheq"/>
+        </region>
+        <!-- content change queue -->
+        <region name="contentq"  listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                   strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9A-Za-z]$" datasource="memcacheq"/>
+        </region>
+        
+        <!-- video queue -->
+        <region name="videoq"  listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                   strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9A-Za-z]$" datasource="call_report"/>
+        </region>
+        
+        <!-- rcmData queue -->
+        <region name="rcmData"  listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                   strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9A-Za-z]$" datasource="call_report"/>
+        </region>
+        <!-- ushareq queue -->
+        <region name="ushareq"  listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                   strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9A-Za-z]$" datasource="call_report"/>
+        </region>
+        <!-- 发送即时聊天消息队列 -->
+        <region name="textq" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9A-Za-z]$" datasource="call_report"/>
+        </region>
+        <!--  Memcacheq  存-->
+        <region name="global"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9A-Za-z]$" datasource="default"/>
+        </region>
+
+        <!--  对象相关的缓存-->
+        <region name="com.lenovo.vctl.apps.contacts.model.UserRelation"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+
+        <region name="com.lenovo.vctl.apps.contacts.model.UserRecords"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <region name="com.lenovo.vctl.apps.contacts.model.Notices"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <region name="com.lenovo.vctl.apps.contacts.model.ReInvite"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <region name="com.lenovo.vctl.apps.contacts.model.UnregisterUserRecord"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <region name="com.lenovo.vctl.apps.contacts.model.InviteRecord"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <region name="com.lenovo.vctl.apps.contacts.model.UserHistory"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <region name="com.lenovo.vctl.apps.contacts.model.UserRecordsBackup"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <region name="com.lenovo.vctl.apps.contacts.model.UserUpdateInfo"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <region name="com.lenovo.vctl.apps.contacts.model.UserText"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <region name="com.lenovo.vctl.apps.contacts.model.VctlTextMsg"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <region name="com.lenovo.vctl.apps.contacts.model.UserAutoAnswer"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <region name="com.lenovo.vctl.apps.contacts.model.UserMayKnow"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="objregion"/>
+        </region>
+        <!--  列表相关的缓存-->
+        <region name="USER_FRIEND_ID_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_COMMONCONTACT_ID_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="FRIEND_ID_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="FRIEND_MOBILE_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USERFRIEND_FRIENDID_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+		
+        <region name="USER_RECORDS_ID_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_RECORDS_FRIEND_ID_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_RECORDS_FRIEND_MOBILE_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_RECORDS_FRIEND_MOBILE_LIST_ASC"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_RECORDS_DETAIL_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_RECORDS_ALL_FRIENDMOBILE"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_RECORDS_ID_TYPE_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_RECORDS_ALL_BETWEEN_TIME_TYPE"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_RECORDS_ALL_FRIENDMOBILE_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_RECORDS_ID_USERID_FRIENDMOBILE_TYPE_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_NOTICE_ID_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+
+        <region name="UNREGISTER_USER_RECORDS_USER_MOBILE_ID_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+
+        <region name="USER_REINVITE_MOBILE_ID_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+
+
+        <region name="USER_HISTORY_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_HISTORY_LIST_ASC" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_HISTORY_USERID_FRIENDMOBILE_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_HISTORY_FRIENDMOBILE_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_HISTORY_USERID_FRIENDMOBILE_TYPE_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+
+        <region name="INVITERECORD_MOBILE_ID_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="INVITERECORD_MAIL_ID_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        
+        <region name="USER_RECORDS_BACKUP_FRIEND_MOBILE_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+
+        <region name="USER_UPDATEINFO_ID_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USERTEXT_USERID_UNREAD_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USERTEXT_USERID_FRIENDID_UNREAD_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USERTEXT_USERID_FRIENDID_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        
+        <region name="USER_AUTOANSWER_USERID_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        
+        <region name="USER_MAYKNOW_USERID_LIST" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+
+        <!-- Map 相关的缓存-->
+        <region name="USER_FRIEND_MAP" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+        <region name="USER_FRIENDMOBILE_MAP" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+        <region name="USER_FRIENDID_MAP" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+
+
+        <region name="USER_REINVITE_UID_FRIEND_MOBILE_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+
+
+        <region name="USER_HISTORY_TYPE_RELATEDID_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+        <region name="USER_HISTORY_USERID_FRIENDID_TYPE_CONTENT_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+        <region name="USER_HISTORY_USERID_FRIENDID_TYPE_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+
+        <region name="INVITERECORD_UID_FRIEND_MOBILE_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+        <region name="INVITERECORD_UID_FRIEND_MOBILE_MAIL_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+
+        <region name="USER_UPDATEINFO_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+        <region name="USERTEXT_TID_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+        <region name="USERTEXT_USERID_MSGID_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+        <region name="TEXT_MSG_FROM_TO_TID_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+        <region name="TEXT_MSG_FROM_TID_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+        <region name="USER_AUTOANSWER_MOBILE_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+
+        <region name="USER_CONV_HISTORY_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_CONV_HISTORY_LIST_ASC"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_HELLO_USER_FRIEND_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_HELLO_USERID_LIST"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="listregion"/>
+        </region>
+        <region name="USER_CONV_HISTORY_USERID_FRIENDID_MAP"
+                listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
+                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
+            <keyPattern value="[0-9]$" datasource="mapregion"/>
+        </region>
+
+    </regions>
+</root>
+

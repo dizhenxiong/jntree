@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<!--
+		ip: ftp server ip address 
+		port: ftp server port path: path of file
+		store in ftp server (example dir/cc) 
+		status: ftp server is run 
+		weight: weight
+	-->
+<root>
+	<default alias="a">
+		<ftp ip="ftp.vctl.lenovo.com" port="21" path="/default" passwd="SK@qq.com" user="photo"
+			domain="default.ifaceshow.com" status="run" weight="1" />
+	</default>
+	 
+	<from name="pic"  alias="a" maxActive="100">
+		<ftp ip="ftp.vctl.lenovo.com" port="21" path="/p1" passwd="SK@qq.com" user="photo"
+			domain="p1.${host}ifaceshow.com" status="run" weight="1" />
+		<ftp ip="ftp.vctl.lenovo.com" port="21" path="/p2" passwd="SK@qq.com" user="photo"
+			domain="p2.${host}ifaceshow.com" status="run" weight="1" />
+		<ftp ip="ftp.vctl.lenovo.com" port="21" path="/p3" passwd="SK@qq.com" user="photo"
+			domain="p3.${host}ifaceshow.com" status="run" weight="1" />
+		<ftp ip="ftp.vctl.lenovo.com" port="21" path="/p4" passwd="SK@qq.com" user="photo"
+			domain="p4.${host}ifaceshow.com" status="run" weight="1" />
+	</from>	
+	
+	<from name="audio"  alias="a" maxActive="100">
+		<ftp ip="ftp1.vctl.lenovo.com" port="21" path="/a1" passwd="SK@qq.com" user="photo"
+			domain="a1.${host}ifaceshow.com" status="run" weight="1" />
+		<ftp ip="ftp1.vctl.lenovo.com" port="21" path="/a2" passwd="SK@qq.com" user="photo"
+			domain="a2.${host}ifaceshow.com" status="run" weight="1" />
+		<ftp ip="ftp1.vctl.lenovo.com" port="21" path="/a3" passwd="SK@qq.com" user="photo"
+			domain="a3.${host}ifaceshow.com" status="run" weight="1" />
+		<ftp ip="ftp1.vctl.lenovo.com" port="21" path="/a4" passwd="SK@qq.com" user="photo"
+			domain="a4.${host}ifaceshow.com" status="run" weight="1" />
+	</from>
+	
+	
+	<from name="video"  alias="a">
+		<ftp ip="ftp.vctl.lenovo.com" port="21" path="/v1" passwd="SK@qq.com" user="photo"
+			domain="v1.${host}ifaceshow.com" status="run" weight="1" />
+		<ftp ip="ftp.vctl.lenovo.com" port="21" path="/v2" passwd="SK@qq.com" user="photo"
+			domain="v2.${host}ifaceshow.com" status="run" weight="1" />
+	</from>
+	
+	<from name="file"  alias="a">
+		<ftp ip="ftp.vctl.lenovo.com" port="21" path="/p1" passwd="SK@qq.com" user="photo"
+			domain="p1.${host}ifaceshow.com" status="run" weight="1" />
+		<ftp ip="ftp.vctl.lenovo.com" port="21" path="/p2" passwd="SK@qq.com" user="photo"
+			domain="p2.${host}ifaceshow.com" status="run" weight="1" />
+		<ftp ip="ftp.vctl.lenovo.com" port="21" path="/p3" passwd="SK@qq.com" user="photo"
+			domain="p3.${host}ifaceshow.com" status="run" weight="1" />
+		<ftp ip="ftp.vctl.lenovo.com" port="21" path="/p4" passwd="SK@qq.com" user="photo"
+			domain="p4.${host}ifaceshow.com" status="run" weight="1" />
+	</from>
+	
+	 <!-- 
+	<from name="audio"  alias="a">
+		<ftp ip="ftp1.vctl.lenovo.com" port="21" path="/p1" passwd="SK@qq.com" user="photo"
+			domain="p1.dev.ifaceshow.com" status="run" weight="1" />
+	</from>
+	 -->
+</root>
