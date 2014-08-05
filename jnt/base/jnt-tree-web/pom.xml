@@ -27,7 +27,10 @@
             <artifactId>spring-webmvc</artifactId>
             <version>3.0.6.RELEASE</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>com.jnt</groupId>
+            <artifactId>jnt-tree-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
