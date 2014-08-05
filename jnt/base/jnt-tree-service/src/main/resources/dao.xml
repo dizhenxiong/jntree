@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="GB2312"?>
+<dal>
+    <default>
+        <dbStrategy name="" clazz="com.sohu.sns.dal.route.strategy.DefaultStrategy">
+            <pattern value="[0-9A-Za-z]$" group="g1"/>
+        </dbStrategy>
+        <listenerClass className=""/>
+        <idCenterDS ds="idCenterDS"/>
+        <!-- 缺省IdCenter使用的数据源配置 -->
+    </default>
+    <route>
+
+        <object name="com.jnt.tree.core.JntTreeInfo" listenerClass="" strategyProperty="treeId">
+            <list name="TREEINFO_TREEID_LIST"
+                  sqlitem="select id from tree_info where tree_id=? order by create_at desc"
+                  sqlType="hsql" keyProperty="treeId" valueProperty="id" update="true"/>
+            <dbStrategy name="" clasz="com.lenovo.vctl.dal.dao.route.strategy.DefaultStrategy">
+                <pattern value="[0-9A-Za-z]$" group="g1"/>
+            </dbStrategy>
+        </object>
+        <object name="com.jnt.tree.core.JntTree" listenerClass="" strategyProperty="userId">
+            <dbStrategy name="" clasz="com.lenovo.vctl.dal.dao.route.strategy.DefaultStrategy">
+                <pattern value="[0-9A-Za-z]$" group="g1"/>
+            </dbStrategy>
+        </object>
+        <object name="com.jnt.tree.core.JntTreeNode" listenerClass="" strategyProperty="userId">
+            <dbStrategy name="" clasz="com.lenovo.vctl.dal.dao.route.strategy.DefaultStrategy">
+                <pattern value="[0-9A-Za-z]$" group="g1"/>
+            </dbStrategy>
+        </object>
+        <object name="com.jnt.tree.core.PostTree" listenerClass="" strategyProperty="userId">
+            <dbStrategy name="" clasz="com.lenovo.vctl.dal.dao.route.strategy.DefaultStrategy">
+                <pattern value="[0-9A-Za-z]$" group="g1"/>
+            </dbStrategy>
+        </object>
+        <object name="com.jnt.tree.core.UserTree" listenerClass="" strategyProperty="userId">
+            <dbStrategy name="" clasz="com.lenovo.vctl.dal.dao.route.strategy.DefaultStrategy">
+                <pattern value="[0-9A-Za-z]$" group="g1"/>
+            </dbStrategy>
+        </object>
+    </route>
+</dal>

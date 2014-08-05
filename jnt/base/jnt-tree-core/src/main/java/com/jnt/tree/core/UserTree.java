@@ -7,6 +7,14 @@ import java.io.Serializable;
  * Created by arthur on 14-7-31.
  * <p/>
  * 用户的技能树，每个用户可以拥有多个技能树
+ * <p/>
+ * CREATE TABLE `user_tree` (
+ * `id` bigint(20) NOT NULL,
+ * `user_id` bigint(20) NOT NULL,
+ * `tree_id` bigint(20) NOT NULL,
+ * `create_at` bigint(20) DEFAULT NULL,
+ * PRIMARY KEY (`id`)
+ * ) ENGINE=InnoDB
  */
 
 @Entity
@@ -20,6 +28,8 @@ public class UserTree implements Serializable {
     private Long userId;
 
     private Long treeId;
+
+    private Long createAt;
 
     public UserTree() {
     }
@@ -60,6 +70,14 @@ public class UserTree implements Serializable {
         this.treeId = treeId;
     }
 
+    @Column(name = "create_at")
+    public Long getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Long createAt) {
+        this.createAt = createAt;
+    }
 
     @Override
     public String toString() {

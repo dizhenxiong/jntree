@@ -4,12 +4,17 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created by arthur on 14-7-31.
+ * 具体的一棵树的信息
+ * CREATE TABLE `tree_info` (
+ * `id` bigint(20) NOT NULL,
+ * `tree_id` bigint(20) NOT NULL,
+ * `node_id` bigint(20) NOT NULL,
+ * `parent_id` bigint(20) NOT NULL,
+ * `create_at` bigint(20) NOT NULL,
+ * PRIMARY KEY (`id`)
+ * ) ENGINE=InnoDB
  */
 
-/**
- * 具体的一棵树的信息
- */
 
 @Entity
 @Table(name = "tree_info")
@@ -28,7 +33,7 @@ public class JntTreeInfo implements Serializable {
 
     private Long parentId;   //树上每个节点的父亲节点标示
 
-
+    private Long createAt;  //创建时间
 
     public JntTreeInfo() {
 
@@ -77,6 +82,16 @@ public class JntTreeInfo implements Serializable {
 
     public void setParentId(Long parentId) {
         this.parentId = parentId;
+    }
+
+
+    @Column(name = "create_at")
+    public Long getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Long createAt) {
+        this.createAt = createAt;
     }
 
     @Transient

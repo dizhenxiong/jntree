@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  */
 
 @Component("jntTreeNodeService")
-
 public class JntTreeNodeServiceImpl extends DalBaseServiceImpl<JntTreeNode> implements JntTreeNodeService<JntTreeNode> {
 
     @Override

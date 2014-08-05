@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  */
 
 @Component("postTreeService")
-
 public class PostTreeServiceImpl extends DalBaseServiceImpl<PostTree> implements PostTreeService<PostTree> {
     @Override
     public Class<PostTree> getEntityClass() {

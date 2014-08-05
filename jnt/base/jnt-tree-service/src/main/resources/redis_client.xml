@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <cache>
+        <datasource name="default1" timeout="5000" port="6379" server="redis1.vctal.lenovo.com" maxActive="18"
+                    maxIdle="18" maxWait="-1"/>
+    </cache>
+    
+    <regions>
+		<region name="default"
+			strategyClass="com.lenovo.vctl.redis.client.route.strategy.impl.DefaultStrategy">
+			<keyPattern value="[0-9A-Za-z]$" datasource="default1" />
+		</region>
+		<region name="defaultf"
+			strategyClass="com.lenovo.vctl.redis.client.route.strategy.impl.DefaultStrategy">
+			<keyPattern value="[0-9A-Za-z]$" datasource="default1" />
+		</region>
+		
+		<region name="sipbegin"
+			strategyClass="com.lenovo.vctl.redis.client.route.strategy.impl.DefaultStrategy">
+			<keyPattern value="[0-9A-Za-z]$" datasource="default1" />
+		</region>
+		
+		<region name="randomcall"
+			strategyClass="com.lenovo.vctl.redis.client.route.strategy.impl.DefaultStrategy">
+			<keyPattern value="[0-9A-Za-z]$" datasource="default1" />
+		</region>
+		
+	</regions>
+	
+</root>
+

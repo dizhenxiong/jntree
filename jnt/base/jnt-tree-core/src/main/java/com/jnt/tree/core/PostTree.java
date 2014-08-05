@@ -5,6 +5,14 @@ import java.io.Serializable;
 
 /**
  * Created by arthur on 14-8-1.
+ *
+ CREATE TABLE `post_tree` (
+ `id` bigint(20) NOT NULL,
+ `post_id` bigint(20) NOT NULL,
+ `tree_id` bigint(20) NOT NULL,
+ `create_at` bigint(20) NOT NULL,
+ PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB
  */
 
 @Entity
@@ -19,6 +27,8 @@ public class PostTree implements Serializable {
     private Long postId;   //岗位的ID
 
     private Long treeId;   //技能树的ID
+
+    private Long createAt;
 
     public PostTree() {
     }
@@ -56,4 +66,14 @@ public class PostTree implements Serializable {
     public void setTreeId(Long treeId) {
         this.treeId = treeId;
     }
+
+    @Column(name = "create_at")
+    public Long getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Long createAt) {
+        this.createAt = createAt;
+    }
+
 }
