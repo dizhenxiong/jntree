@@ -21,10 +21,6 @@
     </cache>
 
     <regions>
-        <region name="noticeq" listenerClass="com.lenovo.vctl.dal.cache.listener.DefaultListenerImpl"
-                strategyClass="com.lenovo.vctl.dal.cache.memcached.route.strategy.DefaultStrategy">
-            <keyPattern value="[0-9A-Za-z]$" datasource="memcacheq"/>
-        </region>
     </regions>
 </root>
 

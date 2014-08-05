@@ -3,7 +3,7 @@
     <datasources>
         <ds name="idCenterDS"
             driverClassName="com.mysql.jdbc.Driver"
-            url="jdbc:mysql://xdylxdyl.mysql.rds.aliyuncs.com:3306/resources"
+            url="jdbc:mysql://user.db.vctal.lenovo.com:3306/resources"
             username="community"
             password="community"
             maxActive=""
@@ -11,7 +11,7 @@
             maxWait="" />
         <ds name="vctal"
             driverClassName="com.mysql.jdbc.Driver"
-            url="jdbc:mysql://xdylxdyl.mysql.rds.aliyuncs.com:3306/app_shell?characterEncoding=utf8"
+            url="jdbc:mysql://user.db.vctal.lenovo.com:3306/test?characterEncoding=utf8"
             username="community"
             password="community"
             maxActive=""
