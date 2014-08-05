@@ -22,7 +22,7 @@ import java.util.*;
  * To change this template use File | Settings | File Templates.
  */
 @Service(JntTreeRemoteService.class)
-@Component("JntTreeInfoRemoteService")
+@Component("JntTreeRemoteService")
 public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
 
     private JntTreeService<JntTree> jntTreeService;
