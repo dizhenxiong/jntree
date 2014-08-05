@@ -27,11 +27,17 @@ public class PlayerController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/memory")
-    public String index(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
-                        String password) throws Exception {
+    @RequestMapping(value = "/memory/tree")
+         public String tree(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
+                             String password) throws Exception {
         JntTree jntTree = jntTreeRemoteService.getJntTree(1l);
         model.put("tree", jntTree);
+        return "simple1";
+    }
+
+    @RequestMapping(value = "/memory/index")
+    public String index(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
+                        String password) throws Exception {
         return "simple1";
     }
 
