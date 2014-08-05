@@ -78,6 +78,28 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <attach>true</attach>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>
+                            src/main/assembly/run.xml
+                        </descriptor>
+                    </descriptors>
+                    <archive>
+                        <manifest>
+                            <mainClass>${main.class}</mainClass>
+                        </manifest>
+                    </archive>
+                    <encoding>utf-8</encoding>
+                    <updateOnly>true</updateOnly>
+
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
