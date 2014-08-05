@@ -25,6 +25,7 @@ import java.util.*;
 @Component("JntTreeRemoteService")
 public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
 
+
     private JntTreeService<JntTree> jntTreeService;
     private JntTreeInfoService<JntTreeInfo> jntTreeInfoService;
     private JntTreeNodeService<JntTreeNode> jntTreeNodeService;
