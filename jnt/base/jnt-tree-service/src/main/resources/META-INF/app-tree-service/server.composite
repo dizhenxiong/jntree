@@ -6,7 +6,7 @@
                 location="/META-INF/app-tree-service/applicationContext-server.xml"/>
         <service name="JntTreeRemoteService">
             <interface.java interface="com.jnt.tree.service.remote.JntTreeRemoteService"/>
-            <tuscany:binding.rmi uri="rmi://TEST-01:8091/JntTreeRmiService"/>
+            <tuscany:binding.rmi uri="rmi://TEST-01:7091/JntTreeRmiService"/>
         </service>
     </component>
 </composite>
