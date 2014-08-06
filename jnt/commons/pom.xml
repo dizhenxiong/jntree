@@ -102,5 +102,6 @@
 
     <modules>
        <module> dal</module>
+       <module> sca</module>
     </modules>
 </project>
