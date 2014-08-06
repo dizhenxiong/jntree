@@ -9,7 +9,7 @@
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
             http://docs.oasis-open.org/ns/opencsa/sca-j/spring/200810 http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
 
-    <context:component-scan base-package="com.jnt.tree"/>
+    <context:component-scan base-package="com.jnt"/>
     <bean id="dao" class="com.lenovo.vctl.dal.dao.impl.CompositeDaoImpl"/>
 
     <!-- 陌生人打招呼的列表-->
