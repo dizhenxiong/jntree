@@ -24,4 +24,5 @@ public class JntTreeRemoteSCAClient implements JntTreeRemoteService {
     public JntTree getJntTree(Long id) throws Exception {
         return jntTreeRemoteService.getJntTree(id);
     }
+
 }
