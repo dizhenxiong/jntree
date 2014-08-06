@@ -12,7 +12,6 @@
     <context:component-scan base-package="com.jnt"/>
     <bean id="dao" class="com.lenovo.vctl.dal.dao.impl.CompositeDaoImpl"/>
 
-    <!-- 陌生人打招呼的列表-->
     <sca:service name="JntTreeRemoteService"
                  type="com.jnt.tree.service.remote.JntTreeRemoteService"
                  target="JntTreeRemoteServiceBean">
