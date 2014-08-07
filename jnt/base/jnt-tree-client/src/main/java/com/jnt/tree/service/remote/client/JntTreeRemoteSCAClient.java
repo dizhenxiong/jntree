@@ -25,7 +25,4 @@ public class JntTreeRemoteSCAClient implements JntTreeRemoteService {
         return jntTreeRemoteService.getJntTree(id);
     }
 
-    public JntTreeRemoteService getJntTreeRemoteService() {
-        return jntTreeRemoteService;
-    }
 }

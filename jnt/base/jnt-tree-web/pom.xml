@@ -18,11 +18,6 @@
             <version>1.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.jnt.sca</groupId>
-            <artifactId>vctl-sca-client</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>com.jnt</groupId>
             <artifactId>jnt-tree-client</artifactId>
             <version>1.0-SNAPSHOT</version>
