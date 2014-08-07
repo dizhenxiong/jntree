@@ -25,9 +25,9 @@
     <script>
         var myTree = null;
         function CreateTree() {
-            myTree = new ECOTree(${tree.name}, 'myTreeContainer');
+            myTree = new ECOTree('${tree.name}', 'myTreeContainer');
             <c:forEach items="${tree.jntTreeInfoLs}" var="treeInfo">
-            myTree.add(${treeInfo.nodeId}, ${treeInfo.parentId}, ${treeInfo.nodeName});
+            myTree.add(${treeInfo.nodeId}, ${treeInfo.parentId}, '${treeInfo.nodeName}'');
             </c:forEach>
             myTree.UpdateTree();
         }
