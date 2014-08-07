@@ -90,11 +90,6 @@
                             src/main/assembly/run.xml
                         </descriptor>
                     </descriptors>
-                    <archive>
-                        <manifest>
-                            <mainClass>${main.class}</mainClass>
-                        </manifest>
-                    </archive>
                     <encoding>utf-8</encoding>
                     <updateOnly>true</updateOnly>
 

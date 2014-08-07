@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PlayerController {
     private static final Log log = LogFactory.getLog(PlayerController.class);
+
     @Autowired
     public JntTreeRemoteService jntTreeRemoteService;
 

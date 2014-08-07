@@ -9,6 +9,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:applicationContext-web.xml
+            classpath:applicationContext-sca.xml
         </param-value>
     </context-param>
 
