@@ -1,24 +1,25 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>scallop-module</artifactId>
-    <groupId>com.lenovo.vctl.sca.scallop</groupId>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jnt.sca.scallop</groupId>
+        <artifactId>scallop-module</artifactId>
+        <version>2.0</version>
+    </parent>
+    <groupId>com.jnt.sca.scallop</groupId>
+    <artifactId>scallop-base-runtime</artifactId>
     <version>2.0</version>
-  </parent>
-  <groupId>com.lenovo.vctl.sca.scallop</groupId>
-  <artifactId>scallop-base-runtime</artifactId>
-  <version>2.0</version>
 
-      <dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.apache.tuscany.sca</groupId>
             <artifactId>tuscany-domain-node</artifactId>
             <version>${tuscany.version}</version>
             <exclusions>
-            	<exclusion>
-            		<artifactId>tuscany-assembly-xsd</artifactId>
-            		<groupId>org.apache.tuscany.sca</groupId>
-            	</exclusion>
+                <exclusion>
+                    <artifactId>tuscany-assembly-xsd</artifactId>
+                    <groupId>org.apache.tuscany.sca</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -65,7 +66,7 @@
             <version>${tuscany.version}</version>
         </dependency>
 
-<!-- All the scdl modules  -->
+        <!-- All the scdl modules  -->
 
         <dependency>
             <groupId>com.lenovo.vctl.sca.scallop</groupId>
@@ -77,10 +78,10 @@
             <artifactId>tuscany-binding-ws</artifactId>
             <version>${tuscany.version}</version>
             <exclusions>
-            	<exclusion>
-            		<artifactId>tuscany-assembly-xsd</artifactId>
-            		<groupId>org.apache.tuscany.sca</groupId>
-            	</exclusion>
+                <exclusion>
+                    <artifactId>tuscany-assembly-xsd</artifactId>
+                    <groupId>org.apache.tuscany.sca</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -98,8 +99,8 @@
             <artifactId>scallop-assembly-xsd</artifactId>
             <version>${scallop.version}</version>
         </dependency>
-     
 
-    </dependencies>  
-  
+
+    </dependencies>
+
 </project>

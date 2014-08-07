@@ -44,7 +44,7 @@ public class RMIRemote implements Comparable<RMIRemote> {
     }
 
     /**
-     * @see Object#equals(Object)
+     * @see java.lang.Object#equals(Object)
      */
     public boolean equals(Object object) {
         if (!(object instanceof RMIRemote)) {
@@ -56,7 +56,7 @@ public class RMIRemote implements Comparable<RMIRemote> {
     }
 
     /**
-     * @see Object#hashCode()
+     * @see java.lang.Object#hashCode()
      */
     public int hashCode() {
         return new HashCodeBuilder(2072921821, 1883966355).append(this.port).append(

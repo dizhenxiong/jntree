@@ -9,8 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.jnt</groupId>
     <artifactId>jnt-tree-service</artifactId>
-
+    <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>com.jnt</groupId>

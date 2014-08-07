@@ -322,7 +322,7 @@ public class ScallopClient implements Subject {
 	 * reference as well).
 	 * 
 	 * @return the default ClassLoader (never <code>null</code>)
-	 * @see Thread#getContextClassLoader()
+	 * @see java.lang.Thread#getContextClassLoader()
 	 */
 	private static ClassLoader getDefaultClassLoader() {
 		ClassLoader cl = null;
