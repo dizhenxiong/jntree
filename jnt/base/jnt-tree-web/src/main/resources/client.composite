@@ -1,0 +1,12 @@
+<composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912"
+           xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.1"
+           targetNamespace="http://www.lenovo.com.cn" name="client">
+    <component name="jntTreeRemoteService">
+        <implementation.java class="com.jnt.tree.service.remote.client.JntTreeRemoteSCAClient"/>
+        <reference name="jntTreeRemoteService">
+            <interface.java interface="com.jnt.tree.service.remote.JntTreeRemoteService"/>
+            <tuscany:binding.rmi registryName="app-tree-rmi" serviceName="JntTreeRmiService"/>
+        </reference>
+    </component>
+
+</composite>
