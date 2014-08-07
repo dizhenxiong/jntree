@@ -299,9 +299,9 @@ ECOTree = function (obj, elm) {
 		defaultNodeWidth : 80,
 		defaultNodeHeight : 40,
 		defaultTarget : 'javascript:void(0);',
-		expandedImage : './img/less.gif',
-		collapsedImage : './img/plus.gif',
-		transImage : './img/trans.gif'
+		expandedImage : '/r/tree/img/less.gif',
+		collapsedImage : '/r/tree/img/plus.gif',
+		transImage : '/r/tree/img/trans.gif'
 	}
 	
 	this.version = "1.1";
