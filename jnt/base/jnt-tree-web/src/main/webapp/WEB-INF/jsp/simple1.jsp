@@ -38,6 +38,6 @@
 
 <div id="myTreeContainer">
 </div>
-<%--${name}--%>
+${name}
 </body>
 </html>
