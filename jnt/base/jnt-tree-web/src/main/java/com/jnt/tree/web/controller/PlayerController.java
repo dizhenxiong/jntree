@@ -20,8 +20,17 @@ public class PlayerController {
     public JntTreeRemoteService jntTreeRemoteService;
 
 
+    public JntTreeRemoteService getJntTreeRemoteService() {
+        return jntTreeRemoteService;
+    }
+
+    public void setJntTreeRemoteService(JntTreeRemoteService jntTreeRemoteService) {
+        this.jntTreeRemoteService = jntTreeRemoteService;
+    }
+
     /**
      * 玩家登入
+
      *
      * @param request
      * @param response
