@@ -20,7 +20,7 @@
 |     References:
 |                                                                
 |     Walker II, J. Q., "A Node-Positioning Algorithm for General Trees"
-|	     			   Software — Practice and Experience 10, 1980 553-561.    
+|	     			   Software ï¿½ Practice and Experience 10, 1980 553-561.    
 |                      (Obtained from C++ User's journal. Feb. 1991)                                                                              
 |					   
 |     Last updated: October 26th, 2006
@@ -362,10 +362,11 @@ ECOTree.SL_NONE = 2;
 
 
 ECOTree._getAutoRenderMode = function() {
-	var r = "VML";
+    var is_ch = /chrome/.test(navigator.userAgent.toLowerCase());
+    var r = "VML";
 	var is_ie6 = /msie 6\.0/i.test(navigator.userAgent);
-	var is_ff = /Firefox/i.test(navigator.userAgent);	
-	if (is_ff) r = "CANVAS";
+	var is_ff = /Firefox/i.test(navigator.userAgent);
+    if (is_ff || is_ch) r = "CANVAS";
 	return r;
 }
 
@@ -705,7 +706,7 @@ ECOTree.prototype._drawTree = function () {
 					this.ctx.restore();
 					
 					//HTML part...
-					s.push('<div id="' + node.id + '" class="econode" style="{top:'+(node.YPosition+this.canvasoffsetTop)+'; left:'+(node.XPosition+this.canvasoffsetLeft)+'; width:'+node.w+'; height:'+node.h+';}" ');
+					s.push('<div id="' + node.id + '" class="econode" style="top:'+(node.YPosition+this.canvasoffsetTop)+'; left:'+(node.XPosition+this.canvasoffsetLeft)+'; width:'+node.w+'; height:'+node.h+';" ');
 					if (this.config.selectMode != ECOTree.SL_NONE)											
 						s.push('onclick="javascript:ECOTree._canvasNodeClickHandler('+this.obj+',event.target.id,\''+node.id+'\');" ');										
 					s.push('>');
