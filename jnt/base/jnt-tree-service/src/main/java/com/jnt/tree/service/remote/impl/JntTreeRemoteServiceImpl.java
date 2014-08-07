@@ -76,6 +76,6 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return jntTree;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

@@ -57,7 +57,7 @@ public class JntTreeNode implements Serializable {
         this.name = name;
     }
 
-    @Column(name = "create_at`")
+    @Column(name = "create_at")
     public Long getCreateAt() {
         return createAt;
     }
