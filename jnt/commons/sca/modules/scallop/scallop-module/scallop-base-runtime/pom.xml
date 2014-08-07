@@ -69,7 +69,7 @@
         <!-- All the scdl modules  -->
 
         <dependency>
-            <groupId>com.lenovo.vctl.sca.scallop</groupId>
+            <groupId>com.jnt.sca.scallop</groupId>
             <artifactId>scallop-binding-rmi</artifactId>
             <version>${scallop.version}</version>
         </dependency>
@@ -95,7 +95,7 @@
             <version>${tuscany.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.lenovo.vctl.sca.scallop</groupId>
+            <groupId>com.jnt.sca.scallop</groupId>
             <artifactId>scallop-assembly-xsd</artifactId>
             <version>${scallop.version}</version>
         </dependency>
