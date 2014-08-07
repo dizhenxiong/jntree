@@ -246,6 +246,11 @@
             <version>2.2.4</version>
         </dependency>
         <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20080701</version>
+        </dependency>
+        <dependency>
             <groupId>kxml2</groupId>
             <artifactId>kxml2</artifactId>
             <version>2.3.0</version>
@@ -304,6 +309,12 @@
             <version>1.0.2</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>3.0.6.RELEASE</version>
+        </dependency>
         <!--    JNT Commons -->
         <dependency>
             <groupId>com.jnt</groupId>
