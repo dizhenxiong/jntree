@@ -18,8 +18,8 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
         }
     }
 
-    @Override
-    public java.util.logging.Logger getParentLogger() throws SQLFeatureNotSupportedException {
-        return null;
-    }
+//    @Override
+//    public java.util.logging.Logger getParentLogger() throws SQLFeatureNotSupportedException {
+//        return null;
+//    }
 }
