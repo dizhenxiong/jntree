@@ -8,5 +8,4 @@
             <tuscany:binding.rmi registryName="app-tree-rmi" serviceName="JntTreeRmiService"/>
         </reference>
     </component>
-
 </composite>
