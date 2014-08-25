@@ -32,15 +32,6 @@ public class PlayerController {
     @Autowired
     public JntTreeRemoteService jntTreeRemoteService;
 
-
-    public JntTreeRemoteService getJntTreeRemoteService() {
-        return jntTreeRemoteService;
-    }
-
-    public void setJntTreeRemoteService(JntTreeRemoteService jntTreeRemoteService) {
-        this.jntTreeRemoteService = jntTreeRemoteService;
-    }
-
     /**
      * 玩家登入
      *
@@ -96,7 +87,7 @@ public class PlayerController {
 
     public void writeJnt(JsonGenerator generator, JntTreeInfo jntTreeInfo) {
         try {
-            if (!jntTreeInfo.getParentId().equals(DalConstants.rootParentId)) {
+            if (jntTreeInfo.getParentId().equals(DalConstants.rootParentId)) {
                 generator.writeObjectFieldStart("data");
                 generator.writeStringField("text", jntTreeInfo.getNodeName());
             }
@@ -107,7 +98,7 @@ public class PlayerController {
                 }
                 generator.writeEndArray();
             }
-            if (!jntTreeInfo.getParentId().equals(DalConstants.rootParentId)) {
+            if (jntTreeInfo.getParentId().equals(DalConstants.rootParentId)) {
                 generator.writeEndObject();
             }
         } catch (Exception e) {
