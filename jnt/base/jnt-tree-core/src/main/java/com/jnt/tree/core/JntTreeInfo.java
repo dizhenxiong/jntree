@@ -2,6 +2,8 @@ package com.jnt.tree.core;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 具体的一棵树的信息
@@ -35,8 +37,10 @@ public class JntTreeInfo implements Serializable {
 
     private Long createAt;  //创建时间
 
-    public JntTreeInfo() {
+    private List<JntTreeInfo> children;
 
+
+    public JntTreeInfo() {
     }
 
 
@@ -90,6 +94,7 @@ public class JntTreeInfo implements Serializable {
         return createAt;
     }
 
+
     public void setCreateAt(Long createAt) {
         this.createAt = createAt;
     }
@@ -104,6 +109,21 @@ public class JntTreeInfo implements Serializable {
     }
 
 
+    @Transient
+    public List<JntTreeInfo> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<JntTreeInfo> children) {
+        this.children = children;
+    }
+
+    public void setChild(JntTreeInfo child){
+        if(null == children){
+            children = new ArrayList<JntTreeInfo>();
+        }
+        children.add(child);
+    }
     @Override
     public String toString() {
         return "JntTreeInfo{" +

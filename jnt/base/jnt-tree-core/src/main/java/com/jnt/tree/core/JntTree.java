@@ -2,16 +2,15 @@ package com.jnt.tree.core;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by arthur on 14-8-1.
- CREATE TABLE `jnt_tree` (
- `id` bigint(20) NOT NULL,
- `name` varchar(30) NOT NULL DEFAULT '',
- `create_at` bigint(20) NOT NULL,
- PRIMARY KEY (`id`)
- ) ENGINE=InnoDB
+ * CREATE TABLE `jnt_tree` (
+ * `id` bigint(20) NOT NULL,
+ * `name` varchar(30) NOT NULL DEFAULT '',
+ * `create_at` bigint(20) NOT NULL,
+ * PRIMARY KEY (`id`)
+ * ) ENGINE=InnoDB
  */
 @Entity
 @Table(name = "jnt_tree")
@@ -23,7 +22,11 @@ public class JntTree implements Serializable {
 
     private String name;       //树的名字
 
-    private List<JntTreeInfo> jntTreeInfoLs;  //树的详细信息
+    private Long headNode;   //树的最上面的node id,是所有node 的祖先
+
+    private Long createAt;
+
+    private JntTreeInfo baseJntTreeInfo;  //树的详细信息
 
     public JntTree() {
 
@@ -41,6 +44,7 @@ public class JntTree implements Serializable {
         return id;
     }
 
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -54,7 +58,15 @@ public class JntTree implements Serializable {
         this.name = name;
     }
 
-    private Long  createAt;
+
+    @Column(name = "head_node")
+    public Long getHeadNode() {
+        return headNode;
+    }
+
+    public void setHeadNode(Long headNode) {
+        this.headNode = headNode;
+    }
 
     @Column(name = "create_at")
     public Long getCreateAt() {
@@ -66,11 +78,11 @@ public class JntTree implements Serializable {
     }
 
     @Transient
-    public List<JntTreeInfo> getJntTreeInfoLs() {
-        return jntTreeInfoLs;
+    public JntTreeInfo getBaseJntTreeInfo() {
+        return baseJntTreeInfo;
     }
 
-    public void setJntTreeInfoLs(List<JntTreeInfo> jntTreeInfoLs) {
-        this.jntTreeInfoLs = jntTreeInfoLs;
+    public void setBaseJntTreeInfo(JntTreeInfo baseJntTreeInfo) {
+        this.baseJntTreeInfo = baseJntTreeInfo;
     }
 }

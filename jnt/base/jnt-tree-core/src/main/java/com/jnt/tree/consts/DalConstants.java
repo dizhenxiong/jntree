@@ -13,4 +13,6 @@ public class DalConstants {
 
     public static Integer MAX_TREE_NODE = 10000;
 
+    public static Long rootParentId = -1l;
+
 }

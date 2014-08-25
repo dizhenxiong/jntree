@@ -1,5 +1,6 @@
 package com.jnt.tree.service.remote.impl;
 
+import com.jnt.tree.consts.DalConstants;
 import com.jnt.tree.core.JntTree;
 import com.jnt.tree.core.JntTreeInfo;
 import com.jnt.tree.core.JntTreeNode;
@@ -55,9 +56,12 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
                 //装配TreeInfo
                 Set<Long> nodeIdSet = new HashSet<Long>();
                 Map<Long, String> nodeMap = new HashMap<Long, String>();
+                Map<Long, JntTreeInfo> jntTreeInfoMap = new HashMap<Long, JntTreeInfo>();
+
+                //第一步： 装配所有的节点信息
                 for (JntTreeInfo jntTreeInfo : jntTreeInfos) {
                     nodeIdSet.add(jntTreeInfo.getNodeId());
-                    nodeIdSet.add(jntTreeInfo.getParentId());
+                    jntTreeInfoMap.put(jntTreeInfo.getNodeId(),jntTreeInfo);
                 }
                 if (CollectionUtils.isNotEmpty(nodeIdSet)) {
                     List<Long> nodeIdLs = new ArrayList<Long>();
@@ -67,11 +71,21 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
                         nodeMap.put(jntTreeNode.getId(), jntTreeNode.getName());
                     }
                 }
-                //具体装配JntTreeInfo
+                //第二步：具体装配JntTree，反相装配
                 for (JntTreeInfo jntTreeInfo : jntTreeInfos) {
                     jntTreeInfo.setNodeName(nodeMap.get(jntTreeInfo.getNodeId()));
+                    Long parentId = jntTreeInfo.getParentId();
+                    //设置树的根节点
+                    if(parentId.equals(DalConstants.rootParentId)){
+                        jntTree.setBaseJntTreeInfo(jntTreeInfo);
+                    }
+                    else{
+                        JntTreeInfo parentJnt = jntTreeInfoMap.get(parentId);
+                        parentJnt.setChild(jntTreeInfo);
+                    }
                 }
-                jntTree.setJntTreeInfoLs(jntTreeInfos);
+
+
             }
         } catch (Exception e) {
             e.printStackTrace(System.out);
