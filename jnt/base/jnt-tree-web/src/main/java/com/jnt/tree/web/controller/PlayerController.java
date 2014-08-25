@@ -1,5 +1,4 @@
 package com.jnt.tree.web.controller;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,7 +7,6 @@ import com.jnt.tree.core.JntTreeDTO;
 import com.jnt.tree.core.JntTreeInfo;
 import com.jnt.tree.web.util.EmptySerializer;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.JsonFactory;
@@ -21,8 +19,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.jnt.tree.service.remote.JntTreeRemoteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.jnt.tree.core.JntTree;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -30,12 +26,13 @@ import java.io.PrintWriter;
 public class PlayerController {
     private static final Log log = LogFactory.getLog(PlayerController.class);
 
+
     @Autowired
     public JntTreeRemoteService jntTreeRemoteService;
 
-    public void setJntTreeRemoteService(JntTreeRemoteService jntTreeRemoteService) {
-        this.jntTreeRemoteService = jntTreeRemoteService;
-    }
+//    public void setJntTreeRemoteService(JntTreeRemoteService jntTreeRemoteService) {
+//        this.jntTreeRemoteService = jntTreeRemoteService;
+//    }
 
     /**
      * 玩家登入
@@ -50,16 +47,17 @@ public class PlayerController {
     public String tree(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
                        String password) throws Exception {
         JntTreeDTO jntTree = jntTreeRemoteService.getJntTree(1l);
-
-        return writeConent(response.getWriter(),jntTree) ;
+        return writeConent(response.getWriter(),new JntTreeDTO()) ;
     }
 
 
-    @RequestMapping(value = "/memory/index")
-    public String index(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
-                        String password) throws Exception {
-        return "result";
-    }
+//    @RequestMapping(value = "/memory/index")
+//    public String index(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
+//                        String password) throws Exception {
+//        JntTreeDTO jntTree = jntTreeRemoteService.getJntTree(1l);
+//        log.info("tree");
+//        return "result";
+//    }
 
 
     public String writeConent(PrintWriter writer, JntTreeDTO jntTree) {
@@ -81,7 +79,7 @@ public class PlayerController {
             generator.writeStringField("theme", "fresh-blue");
             generator.writeStringField("version", "1.2.1");
             //1.遍历整块树递归生成
-            writeJnt(generator,jntTree.getBaseJntTreeInfo());
+//            writeJnt(generator,jntTree.getBaseJntTreeInfo());
             //1.遍历整块树递归生成
             generator.writeEndObject();
             generator.close();

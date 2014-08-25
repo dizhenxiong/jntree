@@ -52,7 +52,7 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
         JntTreeDTO jntTreeDTO = new JntTreeDTO();
         JntTree jntTree = null;
         try {
-            jntTree = (JntTree) jntTreeService.getEntity(id);
+            jntTree =  jntTreeService.getEntity(id);
             if (null != jntTree) {
                 List<JntTreeInfo> jntTreeInfos = jntTreeInfoService.getJntTreeInfoByTreeId(id);
                 //装配TreeInfo
