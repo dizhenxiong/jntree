@@ -47,6 +47,7 @@ public class PlayerController {
         return "simple1";
     }
 
+
     @RequestMapping(value = "/memory/index")
     public String index(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
                         String password) throws Exception {
