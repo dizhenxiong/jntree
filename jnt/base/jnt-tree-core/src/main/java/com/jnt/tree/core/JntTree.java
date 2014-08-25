@@ -26,8 +26,6 @@ public class JntTree implements Serializable {
 
     private Long createAt;
 
-    private JntTreeInfo baseJntTreeInfo;  //树的详细信息
-
     public JntTree() {
 
     }
@@ -77,12 +75,4 @@ public class JntTree implements Serializable {
         this.createAt = createAt;
     }
 
-    @Transient
-    public JntTreeInfo getBaseJntTreeInfo() {
-        return baseJntTreeInfo;
-    }
-
-    public void setBaseJntTreeInfo(JntTreeInfo baseJntTreeInfo) {
-        this.baseJntTreeInfo = baseJntTreeInfo;
-    }
 }

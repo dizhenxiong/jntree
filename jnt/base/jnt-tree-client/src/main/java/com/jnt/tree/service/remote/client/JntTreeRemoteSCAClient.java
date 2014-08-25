@@ -1,6 +1,7 @@
 package com.jnt.tree.service.remote.client;
 
 import com.jnt.tree.core.JntTree;
+import com.jnt.tree.core.JntTreeDTO;
 import com.jnt.tree.service.remote.JntTreeRemoteService;
 import org.oasisopen.sca.annotation.Reference;
 
@@ -21,7 +22,7 @@ public class JntTreeRemoteSCAClient implements JntTreeRemoteService {
     }
 
     @Override
-    public JntTree getJntTree(Long id) throws Exception {
+    public JntTreeDTO getJntTree(Long id) throws Exception {
         return jntTreeRemoteService.getJntTree(id);
     }
 

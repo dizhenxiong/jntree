@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jnt.tree.consts.DalConstants;
+import com.jnt.tree.core.JntTreeDTO;
 import com.jnt.tree.core.JntTreeInfo;
 import com.jnt.tree.web.util.EmptySerializer;
 import org.apache.commons.collections.CollectionUtils;
@@ -32,11 +33,6 @@ public class PlayerController {
     @Autowired
     public JntTreeRemoteService jntTreeRemoteService;
 
-
-    public JntTreeRemoteService getJntTreeRemoteService() {
-        return jntTreeRemoteService;
-    }
-
     public void setJntTreeRemoteService(JntTreeRemoteService jntTreeRemoteService) {
         this.jntTreeRemoteService = jntTreeRemoteService;
     }
@@ -53,7 +49,7 @@ public class PlayerController {
     @RequestMapping(value = "/memory/tree")
     public String tree(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
                        String password) throws Exception {
-        JntTree jntTree = jntTreeRemoteService.getJntTree(1l);
+        JntTreeDTO jntTree = jntTreeRemoteService.getJntTree(1l);
         return writeConent(response.getWriter(),jntTree) ;
     }
 
@@ -65,7 +61,7 @@ public class PlayerController {
     }
 
 
-    public String writeConent(PrintWriter writer, JntTree jntTree) {
+    public String writeConent(PrintWriter writer, JntTreeDTO jntTree) {
         JsonGenerator generator = null;
         // First: need a custom serializer provider
         StdSerializerProvider sp = new StdSerializerProvider();

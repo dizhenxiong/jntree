@@ -1,6 +1,7 @@
 package com.jnt.tree.service.remote;
 
 import com.jnt.tree.core.JntTree;
+import com.jnt.tree.core.JntTreeDTO;
 import org.oasisopen.sca.annotation.Remotable;
 
 import java.util.List;
@@ -13,6 +14,6 @@ import java.util.List;
 @Remotable
 public interface JntTreeRemoteService {
 
-    public JntTree getJntTree(Long id) throws Exception;
+    public JntTreeDTO getJntTree(Long id) throws Exception;
 
 }

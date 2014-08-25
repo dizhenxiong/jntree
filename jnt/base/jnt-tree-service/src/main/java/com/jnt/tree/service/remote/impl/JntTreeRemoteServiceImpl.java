@@ -2,6 +2,7 @@ package com.jnt.tree.service.remote.impl;
 
 import com.jnt.tree.consts.DalConstants;
 import com.jnt.tree.core.JntTree;
+import com.jnt.tree.core.JntTreeDTO;
 import com.jnt.tree.core.JntTreeInfo;
 import com.jnt.tree.core.JntTreeNode;
 import com.jnt.tree.service.JntTreeInfoService;
@@ -47,7 +48,8 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
     }
 
     @Override
-    public JntTree getJntTree(Long id) {
+    public JntTreeDTO getJntTree(Long id) {
+        JntTreeDTO jntTreeDTO = new JntTreeDTO();
         JntTree jntTree = null;
         try {
             jntTree = (JntTree) jntTreeService.getEntity(id);
@@ -77,19 +79,20 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
                     Long parentId = jntTreeInfo.getParentId();
                     //设置树的根节点
                     if(parentId.equals(DalConstants.rootParentId)){
-                        jntTree.setBaseJntTreeInfo(jntTreeInfo);
+                        jntTreeDTO.setBaseJntTreeInfo(jntTreeInfo);
                     }
                     else{
                         JntTreeInfo parentJnt = jntTreeInfoMap.get(parentId);
                         parentJnt.setChild(jntTreeInfo);
                     }
                 }
-
-
             }
+            jntTreeDTO.setJntTree(jntTree);
+
+
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return jntTree;  //To change body of implemented methods use File | Settings | File Templates.
+        return jntTreeDTO;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }
