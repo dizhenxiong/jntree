@@ -50,6 +50,7 @@ public class PlayerController {
     public String tree(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
                        String password) throws Exception {
         JntTreeDTO jntTree = jntTreeRemoteService.getJntTree(1l);
+
         return writeConent(response.getWriter(),jntTree) ;
     }
 
