@@ -10,6 +10,8 @@ import com.jnt.tree.service.JntTreeNodeService;
 import com.jnt.tree.service.JntTreeService;
 import com.jnt.tree.service.remote.JntTreeRemoteService;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.oasisopen.sca.annotation.Service;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +28,8 @@ import java.util.*;
 @Service(JntTreeRemoteService.class)
 @Component("JntTreeRemoteService")
 public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
+
+    private Log log = LogFactory.getLog(JntTreeRemoteServiceImpl.class);
 
 
     private JntTreeService<JntTree> jntTreeService;
@@ -52,7 +56,7 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
         JntTreeDTO jntTreeDTO = new JntTreeDTO();
         JntTree jntTree = null;
         try {
-            jntTree =  jntTreeService.getEntity(id);
+            jntTree = jntTreeService.getEntity(id);
             if (null != jntTree) {
                 List<JntTreeInfo> jntTreeInfos = jntTreeInfoService.getJntTreeInfoByTreeId(id);
                 //装配TreeInfo
@@ -63,12 +67,13 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
                 //第一步： 装配所有的节点信息
                 for (JntTreeInfo jntTreeInfo : jntTreeInfos) {
                     nodeIdSet.add(jntTreeInfo.getNodeId());
-                    jntTreeInfoMap.put(jntTreeInfo.getNodeId(),jntTreeInfo);
+                    jntTreeInfoMap.put(jntTreeInfo.getNodeId(), jntTreeInfo);
                 }
                 if (CollectionUtils.isNotEmpty(nodeIdSet)) {
                     List<Long> nodeIdLs = new ArrayList<Long>();
                     nodeIdLs.addAll(nodeIdSet);
                     List<JntTreeNode> jntTreeNodes = jntTreeNodeService.getObjectList(nodeIdLs);
+                    log.info("Jnt Tree Node size : " + jntTreeNodes.size());
                     for (JntTreeNode jntTreeNode : jntTreeNodes) {
                         nodeMap.put(jntTreeNode.getId(), jntTreeNode.getName());
                     }
@@ -78,16 +83,17 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
                     jntTreeInfo.setNodeName(nodeMap.get(jntTreeInfo.getNodeId()));
                     Long parentId = jntTreeInfo.getParentId();
                     //设置树的根节点
-                    if(parentId.equals(DalConstants.rootParentId)){
+                    if (parentId.equals(DalConstants.rootParentId)) {
                         jntTreeDTO.setBaseJntTreeInfo(jntTreeInfo);
-                    }
-                    else{
+                    } else {
                         JntTreeInfo parentJnt = jntTreeInfoMap.get(parentId);
                         parentJnt.setChild(jntTreeInfo);
                     }
                 }
+                jntTreeDTO.setJntTree(jntTree);
+            } else {
+                log.info("Jnt Tree with ID : " + id + " is null");
             }
-            jntTreeDTO.setJntTree(jntTree);
 
 
         } catch (Exception e) {

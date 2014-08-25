@@ -3,6 +3,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jnt.tree.consts.DalConstants;
+import com.jnt.tree.core.JntTree;
 import com.jnt.tree.core.JntTreeDTO;
 import com.jnt.tree.core.JntTreeInfo;
 import com.jnt.tree.web.util.EmptySerializer;
@@ -47,7 +48,7 @@ public class PlayerController {
     public String tree(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
                        String password) throws Exception {
         JntTreeDTO jntTree = jntTreeRemoteService.getJntTree(1l);
-        return writeConent(response.getWriter(),new JntTreeDTO()) ;
+        return writeConent(response.getWriter(),jntTree) ;
     }
 
 
@@ -79,7 +80,7 @@ public class PlayerController {
             generator.writeStringField("theme", "fresh-blue");
             generator.writeStringField("version", "1.2.1");
             //1.遍历整块树递归生成
-//            writeJnt(generator,jntTree.getBaseJntTreeInfo());
+            writeJnt(generator,jntTree.getBaseJntTreeInfo());
             //1.遍历整块树递归生成
             generator.writeEndObject();
             generator.close();
@@ -91,20 +92,21 @@ public class PlayerController {
 
     public void writeJnt(JsonGenerator generator, JntTreeInfo jntTreeInfo) {
         try {
-            if (!jntTreeInfo.getParentId().equals(DalConstants.rootParentId)) {
+//            if (!jntTreeInfo.getParentId().equals(DalConstants.rootParentId)) {
                 generator.writeObjectFieldStart("data");
                 generator.writeStringField("text", jntTreeInfo.getNodeName());
-            }
-            if (CollectionUtils.isNotEmpty(jntTreeInfo.getChildren())) {
-                generator.writeArrayFieldStart("children");
-                for (JntTreeInfo jInfo : jntTreeInfo.getChildren()) {
-                    writeJnt(generator, jInfo);
-                }
-                generator.writeEndArray();
-            }
-            if (!jntTreeInfo.getParentId().equals(DalConstants.rootParentId)) {
                 generator.writeEndObject();
-            }
+//            }
+//            if (CollectionUtils.isNotEmpty(jntTreeInfo.getChildren())) {
+//                generator.writeArrayFieldStart("children");
+//                for (JntTreeInfo jInfo : jntTreeInfo.getChildren()) {
+//                    writeJnt(generator, jInfo);
+//                }
+//                generator.writeEndArray();
+//            }
+//            if (!jntTreeInfo.getParentId().equals(DalConstants.rootParentId)) {
+//                generator.writeEndObject();
+//            }
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
