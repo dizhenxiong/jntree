@@ -11,7 +11,7 @@ public class TreeMain {
         final Node node = NodeFactory.newInstance().createNode("META-INF/app-tree-service/server.composite", new Contribution("lenovo", contribution));
         node.start();
 
-        System.out.println("node start.");
+        System.out.println("node start \r\n");
         Runtime.getRuntime().addShutdownHook(new Thread(){
             @Override
             public void run() {
