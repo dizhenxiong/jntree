@@ -1,5 +1,7 @@
 package com.jnt.tree.core;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -18,13 +20,14 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "tree_node")
+@JsonIgnoreProperties({"id","createAt"})
 public class JntTreeNode implements Serializable {
 
     private static final long serialVersionUID = -7203343128718524230L;
 
     private Long id;
 
-    private String name;
+    private String text;
 
     private Long createAt;
 
@@ -33,8 +36,8 @@ public class JntTreeNode implements Serializable {
     }
 
 
-    public JntTreeNode(String name) {
-        this.name = name;
+    public JntTreeNode(String text) {
+        this.text = text;
     }
 
     @Id
@@ -49,12 +52,12 @@ public class JntTreeNode implements Serializable {
     }
 
     @Column(name = "name")
-    public String getName() {
-        return name;
+    public String getText() {
+        return text;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Column(name = "create_at")
@@ -70,7 +73,7 @@ public class JntTreeNode implements Serializable {
     public String toString() {
         return "JntTreeNode{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", text='" + text + '\'' +
                 '}';
     }
 

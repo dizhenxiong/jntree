@@ -1,5 +1,10 @@
 package com.jnt.tree.core;
 
+import com.jnt.tree.json.CustomNodeNameSerialize;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,23 +20,39 @@ import java.util.List;
  * `create_at` bigint(20) NOT NULL,
  * PRIMARY KEY (`id`)
  * ) ENGINE=InnoDB
+ *
+
+ {"data ":{"text ":"a 'a","expandState":"expand"},
+ "children":[
+  {
+ "data":          {"text":"bb","expandState":"expand"},
+ "children":[{"data":{"text":"rr"}},{"data":{"text":"nnn"}
+  }
+ ]
+ },
+
  */
 
 
 @Entity
 @Table(name = "tree_info")
+@JsonIgnoreProperties({"createAt","parentId"})
 public class JntTreeInfo implements Serializable {
 
 
     private static final long serialVersionUID = -7203343128718524236L;
 
+    @JsonIgnore
     private Long id;         //无意义主键
 
+    @JsonIgnore
     private Long treeId;     //每棵树有一个唯一的标示
 
+    @JsonIgnore
     private Long nodeId;     //树上每个节点的唯一标示
 
-    private String nodeName;  //每个节点对外展示的名字
+
+    private JntTreeNode data;  //每个节点对外展示的名字
 
     private Long parentId;   //树上每个节点的父亲节点标示
 
@@ -49,6 +70,7 @@ public class JntTreeInfo implements Serializable {
         this.nodeId = nodeId;
         this.parentId = parentId;
     }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -100,22 +122,21 @@ public class JntTreeInfo implements Serializable {
     }
 
     @Transient
-    public String getNodeName() {
-        return nodeName;
-    }
-
-    public void setNodeName(String nodeName) {
-        this.nodeName = nodeName;
-    }
-
-
-    @Transient
     public List<JntTreeInfo> getChildren() {
         return children;
     }
 
     public void setChildren(List<JntTreeInfo> children) {
         this.children = children;
+    }
+
+    @Transient
+    public JntTreeNode getData() {
+        return data;
+    }
+
+    public void setData(JntTreeNode data) {
+        this.data = data;
     }
 
     public void setChild(JntTreeInfo child){

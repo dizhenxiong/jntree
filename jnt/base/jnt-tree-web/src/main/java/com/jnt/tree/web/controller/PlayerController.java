@@ -2,6 +2,7 @@ package com.jnt.tree.web.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.jnt.tree.consts.DalConstants;
 import com.jnt.tree.core.JntTree;
 import com.jnt.tree.core.JntTreeDTO;
@@ -62,6 +63,10 @@ public class PlayerController {
 
 
     public String writeConent(PrintWriter writer, JntTreeDTO jntTree) {
+
+        Gson gson = new Gson();
+
+
         JsonGenerator generator = null;
         // First: need a custom serializer provider
         StdSerializerProvider sp = new StdSerializerProvider();
@@ -73,16 +78,17 @@ public class PlayerController {
             objmap.setSerializerProvider(sp);
             SerializationConfig serializationConfig = objmap.getSerializationConfig();
             generator.setCodec(objmap);
-            generator.writeStartObject();
-
-            generator.writeStringField("expandState", "expand");
-            generator.writeStringField("template", null);
-            generator.writeStringField("theme", "fresh-blue");
-            generator.writeStringField("version", "1.2.1");
-            //1.遍历整块树递归生成
-            writeJnt(generator,jntTree.getBaseJntTreeInfo());
-            //1.遍历整块树递归生成
-            generator.writeEndObject();
+            generator.writeObject(jntTree.getBaseJntTreeInfo());
+//            generator.writeStartObject();
+//
+//            generator.writeStringField("expandState", "expand");
+//            generator.writeStringField("template", null);
+//            generator.writeStringField("theme", "fresh-blue");
+//            generator.writeStringField("version", "1.2.1");
+//            //1.遍历整块树递归生成
+//            writeJnt(generator,jntTree.getBaseJntTreeInfo());
+//            //1.遍历整块树递归生成
+//            generator.writeEndObject();
             generator.close();
         } catch (IOException e) {
             e.printStackTrace(System.out);
@@ -94,16 +100,15 @@ public class PlayerController {
         try {
 //            if (!jntTreeInfo.getParentId().equals(DalConstants.rootParentId)) {
                 generator.writeObjectFieldStart("data");
-                generator.writeStringField("text", jntTreeInfo.getNodeName());
                 generator.writeEndObject();
 //            }
-//            if (CollectionUtils.isNotEmpty(jntTreeInfo.getChildren())) {
-//                generator.writeArrayFieldStart("children");
-//                for (JntTreeInfo jInfo : jntTreeInfo.getChildren()) {
-//                    writeJnt(generator, jInfo);
-//                }
-//                generator.writeEndArray();
-//            }
+            if (CollectionUtils.isNotEmpty(jntTreeInfo.getChildren())) {
+                generator.writeArrayFieldStart("children");
+                for (JntTreeInfo jInfo : jntTreeInfo.getChildren()) {
+                    writeJnt(generator, jInfo);
+                }
+                generator.writeEndArray();
+            }
 //            if (!jntTreeInfo.getParentId().equals(DalConstants.rootParentId)) {
 //                generator.writeEndObject();
 //            }

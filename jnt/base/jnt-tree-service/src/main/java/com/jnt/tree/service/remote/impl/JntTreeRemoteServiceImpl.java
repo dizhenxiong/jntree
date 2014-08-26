@@ -18,13 +18,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: kangyang1
- * Date: 14-8-4
- * Time: 下午4:10
- * To change this template use File | Settings | File Templates.
- */
+
 @Service(JntTreeRemoteService.class)
 @Component("JntTreeRemoteService")
 public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
@@ -61,7 +55,7 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
                 List<JntTreeInfo> jntTreeInfos = jntTreeInfoService.getJntTreeInfoByTreeId(id);
                 //装配TreeInfo
                 Set<Long> nodeIdSet = new HashSet<Long>();
-                Map<Long, String> nodeMap = new HashMap<Long, String>();
+                Map<Long, JntTreeNode> nodeMap = new HashMap<Long, JntTreeNode>();
                 Map<Long, JntTreeInfo> jntTreeInfoMap = new HashMap<Long, JntTreeInfo>();
 
                 //第一步： 装配所有的节点信息
@@ -75,12 +69,12 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
                     List<JntTreeNode> jntTreeNodes = jntTreeNodeService.getObjectList(nodeIdLs);
                     log.info("Jnt Tree Node size : " + jntTreeNodes.size());
                     for (JntTreeNode jntTreeNode : jntTreeNodes) {
-                        nodeMap.put(jntTreeNode.getId(), jntTreeNode.getName());
+                        nodeMap.put(jntTreeNode.getId(),jntTreeNode);
                     }
                 }
                 //第二步：具体装配JntTree，反相装配
                 for (JntTreeInfo jntTreeInfo : jntTreeInfos) {
-                    jntTreeInfo.setNodeName(nodeMap.get(jntTreeInfo.getNodeId()));
+                    jntTreeInfo.setData(nodeMap.get(jntTreeInfo.getNodeId()));
                     Long parentId = jntTreeInfo.getParentId();
                     //设置树的根节点
                     if (parentId.equals(DalConstants.rootParentId)) {
