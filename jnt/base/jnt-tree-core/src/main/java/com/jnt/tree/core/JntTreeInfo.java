@@ -1,9 +1,7 @@
 package com.jnt.tree.core;
 
-import com.jnt.tree.json.CustomNodeNameSerialize;
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -58,7 +56,7 @@ public class JntTreeInfo implements Serializable {
 
     private Long createAt;  //创建时间
 
-    private List<JntTreeInfo> children;
+    private List<JntTreeInfo> children = null;
 
 
     public JntTreeInfo() {

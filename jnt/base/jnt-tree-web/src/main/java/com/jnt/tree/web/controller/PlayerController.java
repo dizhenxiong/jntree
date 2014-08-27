@@ -1,26 +1,24 @@
 package com.jnt.tree.web.controller;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationConfig;
 import com.google.gson.Gson;
-import com.jnt.tree.consts.DalConstants;
-import com.jnt.tree.core.JntTree;
 import com.jnt.tree.core.JntTreeDTO;
 import com.jnt.tree.core.JntTreeInfo;
-import com.jnt.tree.web.util.EmptySerializer;
+import com.jnt.tree.service.remote.JntTreeRemoteService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.codehaus.jackson.JsonFactory;
-import org.codehaus.jackson.JsonGenerator;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.SerializationConfig;
-import org.codehaus.jackson.map.ser.StdSerializerProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.jnt.tree.service.remote.JntTreeRemoteService;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -49,7 +47,7 @@ public class PlayerController {
     public String tree(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
                        String password) throws Exception {
         JntTreeDTO jntTree = jntTreeRemoteService.getJntTree(1l);
-        return writeConent(response.getWriter(),jntTree) ;
+        return writeConent(response.getWriter(), jntTree);
     }
 
 
@@ -69,13 +67,14 @@ public class PlayerController {
 
         JsonGenerator generator = null;
         // First: need a custom serializer provider
-        StdSerializerProvider sp = new StdSerializerProvider();
-        sp.setNullValueSerializer(new EmptySerializer());
+//        StdSerializerProvider sp = new StdSerializerProvider();
+//        sp.setNullValueSerializer(new EmptySerializer());
         try {
             JsonFactory factory = new JsonFactory();
-            generator = factory.createJsonGenerator(writer);
+            generator =  factory.createGenerator(writer);
             ObjectMapper objmap = new ObjectMapper();
-            objmap.setSerializerProvider(sp);
+            objmap.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+//            objmap.setSerializerProvider(sp);
             SerializationConfig serializationConfig = objmap.getSerializationConfig();
             generator.setCodec(objmap);
             generator.writeObject(jntTree.getBaseJntTreeInfo());
@@ -99,8 +98,8 @@ public class PlayerController {
     public void writeJnt(JsonGenerator generator, JntTreeInfo jntTreeInfo) {
         try {
 //            if (!jntTreeInfo.getParentId().equals(DalConstants.rootParentId)) {
-                generator.writeObjectFieldStart("data");
-                generator.writeEndObject();
+            generator.writeObjectFieldStart("data");
+            generator.writeEndObject();
 //            }
             if (CollectionUtils.isNotEmpty(jntTreeInfo.getChildren())) {
                 generator.writeArrayFieldStart("children");

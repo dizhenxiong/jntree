@@ -1,6 +1,7 @@
 package com.jnt.tree.core;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,18 +10,18 @@ import java.io.Serializable;
  * Created by arthur on 14-7-31.
  * <p/>
  * 树上的某个节点的信息
- *
- CREATE TABLE `tree_node` (
- `id` bigint(20) NOT NULL,
- `name` varchar(30) NOT NULL DEFAULT '',
- `create_at` bigint(20) NOT NULL,
- PRIMARY KEY (`id`)
- ) ENGINE=InnoDB
+ * <p/>
+ * CREATE TABLE `tree_node` (
+ * `id` bigint(20) NOT NULL,
+ * `name` varchar(30) NOT NULL DEFAULT '',
+ * `create_at` bigint(20) NOT NULL,
+ * PRIMARY KEY (`id`)
+ * ) ENGINE=InnoDB
  */
 
 @Entity
 @Table(name = "tree_node")
-@JsonIgnoreProperties({"id","createAt"})
+@JsonIgnoreProperties({"id", "createAt"})
 public class JntTreeNode implements Serializable {
 
     private static final long serialVersionUID = -7203343128718524230L;
@@ -30,6 +31,9 @@ public class JntTreeNode implements Serializable {
     private String text;
 
     private Long createAt;
+
+    private String expandState = "expand";
+
 
     public JntTreeNode() {
 
@@ -69,6 +73,15 @@ public class JntTreeNode implements Serializable {
         this.createAt = createAt;
     }
 
+
+    @Transient
+    public String getExpandState() {
+        return expandState;
+    }
+
+    public void setExpandState(String expandState) {
+        this.expandState = expandState;
+    }
     @Override
     public String toString() {
         return "JntTreeNode{" +
