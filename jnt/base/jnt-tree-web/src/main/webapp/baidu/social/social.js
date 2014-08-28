@@ -96,16 +96,19 @@ $(function() {
     start();
 
     function start() {
-        initUI();
+     /*   initUI();
         initFrontia();
         if (checkLogin()) {
             return;
         }
         loadShare();
-        bindShortCuts();
+        bindShortCuts();*/
         bindDraft();
+
         if (draftManager) watchChanges();
-        if (draftManager && !loadPath() && !isShareLink) loadDraft(0);
+        loadDraft(0)
+       // if (draftManager && !loadPath() && !isShareLink) loadDraft(0);
+        $(".kmui-toolbar").hide();
     }
 
     function createFileMenu() {
@@ -950,7 +953,7 @@ $(function() {
             }
         }
 
-        $draft_menu.delegate('a.delete', 'click', function(e) {
+       /* $draft_menu.delegate('a.delete', 'click', function(e) {
             var $li = $(this).closest('li.draft-item');
             draftManager.remove(+$li.data('draft-index'));
             $li.remove();
@@ -968,24 +971,27 @@ $(function() {
 
         .delegate('li.draft-item', 'click', function(e) {
             loadDraft(+$(this).data('draft-index'));
-        });
+        });*/
     }
 
     function loadDraft(index) {
         console.log("hello ~~"+index);
-        var draft = draftManager.open(index),
-            isRemote;
+       // var draft = draftManager.open(index), isRemote;
 
 
 
         //if (!draft) return;
 
+  /*      isRemote = draft.path.indexOf('/apps/kityminder') === 0;
+        if (isRemote) {
+            setRemotePath(draft.path, draft.sync);
+        }*/
         watchingChanges = false;
         draftManager.load();
         watchingChanges = true;
-        if (!isRemote) {
+     /*   if (!isRemote) {
             setRemotePath(null, false);
-        }
+        }*/
         minder.execCommand('camera', null, 300);
     }
 

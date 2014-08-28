@@ -37,18 +37,19 @@ function DraftManager( minder ) {
 
     function getTreeData(id){
 
-        return ajaxJson("http://api.test.ifaceshow.com/player/tree/1", "get", {}, null, 5000, "json");
+        return ajaxJson("/player/tree/"+id, "get", {}, null, 5000, "json");
 
     }
     function load() {
-        if ( current ) {
-            var id=$("#treeID").val();
+
 
           // mock_data=  "{\"data\":{\"text\":\"中心主题2\",\"expandState\":\"expand\"},\"children\":[{\"data\":{\"text\":\"康总这是我改数据画出来的\"}}],\"template\":null,\"theme\":\"fresh-blue\",\"version\":\"1.2.1\"}";
           //  mock_data=current.data;
-           mock_data=JSON.stringify(getTreeData(1));
+            var id= $("#treeID").val();
+
+           mock_data=JSON.stringify(getTreeData(id));
             minder.importData( mock_data, 'json' );
-        }
+
         return current;
     }
 
