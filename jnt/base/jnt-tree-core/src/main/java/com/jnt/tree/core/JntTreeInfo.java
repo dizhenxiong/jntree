@@ -56,6 +56,8 @@ public class JntTreeInfo implements Serializable {
 
     private Long createAt;  //创建时间
 
+    private Integer capbility; //能力等级  1 ~ 6
+
     private List<JntTreeInfo> children = null;
 
 
@@ -117,6 +119,16 @@ public class JntTreeInfo implements Serializable {
 
     public void setCreateAt(Long createAt) {
         this.createAt = createAt;
+    }
+
+
+    @Column(name = "capability")
+    public Integer getCapbility() {
+        return capbility;
+    }
+
+    public void setCapbility(Integer capbility) {
+        this.capbility = capbility;
     }
 
     @Transient
