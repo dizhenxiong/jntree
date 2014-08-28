@@ -1,5 +1,5 @@
 /**
- * 开发版本的文件导入
+ * 开发版本的文件导入 xdyl
  */
 (function() {
     var paths = [
