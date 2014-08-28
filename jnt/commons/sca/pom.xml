@@ -13,20 +13,20 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description/>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>central</id>
-            <name>Central Repository</name>
-            <url>http://mvnrepository.lenovo.com:8088/nexus/content/groups/public</url>
-            <layout>default</layout>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
+    <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+            <!--<id>central</id>-->
+            <!--<name>Central Repository</name>-->
+            <!--<url>http://mvnrepository.lenovo.com:8088/nexus/content/groups/public</url>-->
+            <!--<layout>default</layout>-->
+            <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+            <!--</snapshots>-->
+            <!--<releases>-->
+                <!--<updatePolicy>never</updatePolicy>-->
+            <!--</releases>-->
+        <!--</pluginRepository>-->
+    <!--</pluginRepositories>-->
     <modules>
         <module>modules</module>
         <module>sca-common</module>
