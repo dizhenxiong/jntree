@@ -21,6 +21,7 @@
         <module>jnt-tree-core</module>
         <module>jnt-tree-service</module>
         <module>jnt-tree-client</module>
+        <module>jnt-post-client</module>
     </modules>
 
 
