@@ -1,0 +1,13 @@
+{"data": {
+    "text": "中心主题2",
+    "expandState": "expand"
+}, "children": [
+    {
+        "data": {
+            "text": "康总这是我改数据画出来的"
+        },
+        "data": {
+            "text": "康总这是我改数据画出来的2"
+        }
+    }
+], "template": null, "theme": "fresh-blue", "version": "1.2.1"}
