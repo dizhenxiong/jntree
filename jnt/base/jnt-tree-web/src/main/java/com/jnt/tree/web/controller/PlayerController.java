@@ -15,7 +15,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,17 +41,21 @@ public class PlayerController {
      *
      * @param request
      * @param response
-     * @param model
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/memory/tree")
-    public String tree(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
-                       String password) throws Exception {
-        JntTreeDTO jntTree = jntTreeRemoteService.getJntTree(1l);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/player/tree/{id}")
+    public String tree(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        JntTreeDTO jntTree = jntTreeRemoteService.getJntTree(id);
         return writeConent(response.getWriter(), jntTree);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/player/show/{id}")
+    public String show(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response,ModelMap modal) throws Exception {
+        modal.addAttribute("id",id);
+        return "tree";
+    }
 
 //    @RequestMapping(value = "/memory/index")
 //    public String index(HttpServletRequest request, HttpServletResponse response, ModelMap model, String name,
@@ -71,7 +77,7 @@ public class PlayerController {
 //        sp.setNullValueSerializer(new EmptySerializer());
         try {
             JsonFactory factory = new JsonFactory();
-            generator =  factory.createGenerator(writer);
+            generator = factory.createGenerator(writer);
             ObjectMapper objmap = new ObjectMapper();
             objmap.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 //            objmap.setSerializerProvider(sp);
