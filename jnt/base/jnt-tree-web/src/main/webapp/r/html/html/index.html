@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <!-- 本页面支持 chrome/firefox/safari/opera/ie8+ 兼容 -->
+    <title>技能树——改变你我</title>
+
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <!-- 自加载样式 -->
+    <link rel="stylesheet" href="../css/style.css"/>
+
+    <!-- jquery 核心文件 -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- full page 的依赖文件及本身 -->
+    <script src="../vendors/jquery.easings.min.js"></script>
+    <script src="../vendors/jquery.slimscroll.min.js"></script>
+    <script src="../vendors/jquery.fullPage.js"></script>
+
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div id="fullpage">
+    <div class="section">
+
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">技能树</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#">首页</a></li>
+                        <li><a href="#">职业</a></li>
+                        <li><a href="#">沙龙</a></li>
+                        <li><a href="#">关于</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container page1">
+            <div class="row">
+                <div class="vcenter">
+                    <h3>作为一个初级或中级的小菜鸟，你是否想了解</h3>
+                    <h2>50万年薪的程序员，都会什么技术？</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container page2">
+            <div class="row">
+                <div class="vcenter">
+                    <h3>如果对高薪的职位感兴趣了，你是否想知道</h3>
+                    <h2>以什么样的顺序，学会这么多内容？</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container page3">
+            <div class="row">
+                <div class="text-center">
+                    <br><br>
+                    <h3>现在选好要学习的技能了，你是否想找到</h3>
+                    <h2>这项技能的相关资料，和志同道合的朋友？</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container page4">
+            <div class="row">
+                <div class="vcenter">
+                    <h3>如果你对上面三个问题感兴趣，那么</h3>
+                    <h2>从现在起，改变你我，学习别人的技术体系<br>走上自己的高薪之路</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+
+        <div class="container page5">
+            <div class="row">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-3 part1">寻找职业</div>
+                        <div class="col-md-3 part2">查看规划</div>
+                        <div class="col-md-3 part3">选择技能</div>
+                        <div class="col-md-3 part4">浏览资源</div>
+                    </div>
+                    <div class="row text-center">
+                        <a href="" class="start-button">从这里开始</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center">
+            <div class="footer-above">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">friend links</div>
+                        <div class="col-md-4">friend links</div>
+                        <div class="col-md-4">friend links</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">friend links</div>
+                        <div class="col-md-4">friend links</div>
+                        <div class="col-md-4">friend links</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-below">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">friend links</div>
+                        <div class="col-md-6">friend links</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">© 2012 Company, Inc. 京ICP备13005880号</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#fullpage').fullpage({
+            sectionsColor : ['#d9bead', '#7db4b9', '#f5f5f5', '#ece2a4', '#4f4b40'],
+            anchors: ['page1', 'page2', 'page3', 'page4', 'page5']
+        });
+    });
+</script>
+</body>
+</html>

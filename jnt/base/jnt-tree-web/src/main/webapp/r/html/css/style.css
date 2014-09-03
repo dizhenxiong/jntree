@@ -1,0 +1,85 @@
+body {
+    font-family: 'microsoft yahei';
+}
+.section {
+    position: relative;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #000;
+    width: 100%;
+}
+.footer-above {
+    padding: 10px 0;
+    background: #111;
+}
+.footer-below {
+    padding: 10px 0;
+}
+h2 {
+    line-height: 48px;
+}
+.page1 {
+    height: 100%;
+    background: url("../img/fullpage1.png") no-repeat 70% 40%;
+}
+.page2 {
+    height: 100%;
+    background: url("../img/fullpage2.png") no-repeat 70% 40%;
+}
+.page3 {
+    height: 100%;
+    background: url("../img/fullpage3.png") no-repeat 50% 70%;
+}
+.page4 {
+    height: 100%;
+    background: url("../img/fullpage4.png") no-repeat 70% 40%;
+}
+.page1 .row, .page2 .row, .page4 .row{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.vcenter {
+    position: absolute;
+    top: 32%;
+    width: 100%;
+}
+.page5 .content {
+    width: 70%;
+    margin: 100px auto 0;
+}
+.page5 .part1, .page5 .part2, .page5 .part3, .page5 .part4 {
+    padding-top: 170px;
+    text-align: center;
+    color: #fff;
+}
+.page5 .part1 {
+    background: url("../img/fullpage5_1.png") no-repeat 20px 0;
+}
+.page5 .part2 {
+    background: url("../img/fullpage5_2.png") no-repeat 20px 0;
+}
+.page5 .part3 {
+    background: url("../img/fullpage5_3.png") no-repeat 20px 0;
+}
+.page5 .part4 {
+    background: url("../img/fullpage5_4.png") no-repeat 20px 0;
+}
+.start-button {
+    display: inline-block;
+    margin-top: 30px;
+    width: 191px;
+    height: 61px;
+    background: url("../img/fullpage_btn.png");
+    color: #fff;
+    line-height: 60px;
+    font-size: 18px;
+}
+.start-button:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
