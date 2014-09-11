@@ -111,6 +111,11 @@ $(function() {
         $(".kmui-toolbar").hide();
     }
 
+    minder.on('click', function(e) {
+        alert(e.getTargetNode().data.text);
+        console.log(e.getTargetNode());
+    })
+
     function createFileMenu() {
         var menus = [{
             label: '新建',
