@@ -130,99 +130,10 @@ KityMinder.registerModule('KeyboardModule', function() {
     var lastFrame;
     return {
         'events': {
-            'layoutallfinish': function() {
-                var root = this.getRoot();
-                function build() {
-                    buildPositionNetwork(root);
-                }
-                kity.Timeline.releaseFrame(lastFrame);
-                lastFrame = kity.Timeline.requestFrame(build);
-            },
-            'inputready.beforekeydown': function(e) {
-                var keyEvent = e.originEvent;
-                if (keyEvent.shiftKey && keyEvent.keyCode == KityMinder.keymap.Tab) e.preventDefault();
-            },
-            'normal.keydown': function(e) {
 
-                var keys = KityMinder.keymap;
-                var node = e.getTargetNode();
-                var lang = this.getLang();
 
-                if (this.receiver) this.receiver.keydownNode = node;
 
-                var keyEvent = e.originEvent;
 
-                if (keyEvent.altKey || keyEvent.ctrlKey || keyEvent.metaKey || keyEvent.shiftKey) {
-                    if ([keys.Tab].indexOf(keyEvent.keyCode)) e.preventDefault;
-                    return;
-                }
-
-                switch (keyEvent.keyCode) {
-                    case keys.Enter:
-                        this.execCommand('AppendSiblingNode', lang.topic);
-                        e.preventDefault();
-                        break;
-                    case keys.Tab:
-                        this.execCommand('AppendChildNode', lang.topic);
-                        e.preventDefault();
-                        break;
-                    case keys.Backspace:
-                    case keys.Del:
-                        e.preventDefault();
-                        this.execCommand('RemoveNode');
-                        break;
-                    case keys.F2:
-                        e.preventDefault();
-                        this.execCommand('EditNode');
-                        break;
-
-                    case keys.Left:
-                        navigateTo(this, 'left');
-                        e.preventDefault();
-                        break;
-                    case keys.Up:
-                        navigateTo(this, 'top');
-                        e.preventDefault();
-                        break;
-                    case keys.Right:
-                        navigateTo(this, 'right');
-                        e.preventDefault();
-                        break;
-                    case keys.Down:
-                        navigateTo(this, 'down');
-                        e.preventDefault();
-                        break;
-                }
-
-            },
-            'normal.keyup': function(e) {
-                if (browser.ipad) {
-                    var keys = KityMinder.keymap;
-                    var node = e.getTargetNode();
-                    var lang = this.getLang();
-
-                    if (this.receiver) this.receiver.keydownNode = node;
-
-                    var keyEvent = e.originEvent;
-
-                    if (keyEvent.altKey || keyEvent.ctrlKey || keyEvent.metaKey || keyEvent.shiftKey) return;
-
-                    switch (keyEvent.keyCode) {
-                        case keys.Enter:
-                            this.execCommand('AppendSiblingNode', lang.topic);
-                            e.preventDefault();
-                            break;
-
-                        case keys.Backspace:
-                        case keys.Del:
-                            e.preventDefault();
-                            this.execCommand('RemoveNode');
-                            break;
-
-                    }
-                }
-
-            }
         }
     };
 });
