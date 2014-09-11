@@ -18,23 +18,22 @@ import java.util.List;
  * `create_at` bigint(20) NOT NULL,
  * PRIMARY KEY (`id`)
  * ) ENGINE=InnoDB
- *
-
- {"data ":{"text ":"a 'a","expandState":"expand"},
- "children":[
-  {
- "data":          {"text":"bb","expandState":"expand"},
- "children":[{"data":{"text":"rr"}},{"data":{"text":"nnn"}
-  }
- ]
- },
-
+ * <p/>
+ * <p/>
+ * {"data ":{"text ":"a 'a","expandState":"expand"},
+ * "children":[
+ * {
+ * "data":          {"text":"bb","expandState":"expand"},
+ * "children":[{"data":{"text":"rr"}},{"data":{"text":"nnn"}
+ * }
+ * ]
+ * },
  */
 
 
 @Entity
 @Table(name = "tree_info")
-@JsonIgnoreProperties({"createAt","parentId"})
+@JsonIgnoreProperties({"createAt", "parentId"})
 public class JntTreeInfo implements Serializable {
 
 
@@ -44,6 +43,7 @@ public class JntTreeInfo implements Serializable {
     private Long id;         //无意义主键
 
     @JsonIgnore
+
     private Long treeId;     //每棵树有一个唯一的标示
 
     @JsonIgnore
@@ -57,6 +57,9 @@ public class JntTreeInfo implements Serializable {
     private Long createAt;  //创建时间
 
     private Integer capbility; //能力等级  1 ~ 6
+
+    private Integer color;
+
 
     private List<JntTreeInfo> children = null;
 
@@ -131,6 +134,16 @@ public class JntTreeInfo implements Serializable {
         this.capbility = capbility;
     }
 
+
+    @Column(name = "color")
+    public Integer getColor() {
+        return color;
+    }
+
+    public void setColor(Integer color) {
+        this.color = color;
+    }
+
     @Transient
     public List<JntTreeInfo> getChildren() {
         return children;
@@ -149,12 +162,13 @@ public class JntTreeInfo implements Serializable {
         this.data = data;
     }
 
-    public void setChild(JntTreeInfo child){
-        if(null == children){
+    public void setChild(JntTreeInfo child) {
+        if (null == children) {
             children = new ArrayList<JntTreeInfo>();
         }
         children.add(child);
     }
+
     @Override
     public String toString() {
         return "JntTreeInfo{" +

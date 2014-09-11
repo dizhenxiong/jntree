@@ -21,7 +21,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "tree_node")
-@JsonIgnoreProperties({"id", "createAt"})
+@JsonIgnoreProperties({"createAt"})
 public class JntTreeNode implements Serializable {
 
     private static final long serialVersionUID = -7203343128718524230L;
