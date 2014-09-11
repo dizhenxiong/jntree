@@ -24,11 +24,12 @@ KM.registerUI( 'contextmenu', function () {
             }
 
             this.hide();
+
         }
     });
-    me.$container.append($menu);
+    //me.$container.append($menu);
     me.on('contextmenu', function(e) {
-        e.preventDefault();
+       // e.preventDefault();
     });
     me.on('mouseup', function (e) {
         //e.preventDefault();
