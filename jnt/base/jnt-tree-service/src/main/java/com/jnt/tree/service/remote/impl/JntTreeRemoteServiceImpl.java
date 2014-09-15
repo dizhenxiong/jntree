@@ -74,7 +74,9 @@ public class JntTreeRemoteServiceImpl implements JntTreeRemoteService {
                 }
                 //第二步：具体装配JntTree，反相装配
                 for (JntTreeInfo jntTreeInfo : jntTreeInfos) {
-                    jntTreeInfo.setData(nodeMap.get(jntTreeInfo.getNodeId()));
+                    JntTreeNode jntNode = nodeMap.get(jntTreeInfo.getNodeId());
+                    jntNode.setColor(jntTreeInfo.getColor());
+                    jntTreeInfo.setData(jntNode);
                     Long parentId = jntTreeInfo.getParentId();
                     //设置树的根节点
                     if (parentId.equals(DalConstants.rootParentId)) {

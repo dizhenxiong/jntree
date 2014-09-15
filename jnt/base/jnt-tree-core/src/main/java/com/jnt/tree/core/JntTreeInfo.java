@@ -33,7 +33,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tree_info")
-@JsonIgnoreProperties({"createAt", "parentId"})
+@JsonIgnoreProperties({"createAt", "color", "parentId"})
 public class JntTreeInfo implements Serializable {
 
 
@@ -58,7 +58,7 @@ public class JntTreeInfo implements Serializable {
 
     private Integer capbility; //能力等级  1 ~ 6
 
-    private Integer color;
+    private String color;
 
 
     private List<JntTreeInfo> children = null;
@@ -136,11 +136,11 @@ public class JntTreeInfo implements Serializable {
 
 
     @Column(name = "color")
-    public Integer getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Integer color) {
+    public void setColor(String color) {
         this.color = color;
     }
 

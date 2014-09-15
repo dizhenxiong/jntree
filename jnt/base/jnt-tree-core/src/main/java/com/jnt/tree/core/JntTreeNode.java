@@ -34,6 +34,7 @@ public class JntTreeNode implements Serializable {
 
     private String expandState = "expand";
 
+    private String color;
 
     public JntTreeNode() {
 
@@ -82,6 +83,17 @@ public class JntTreeNode implements Serializable {
     public void setExpandState(String expandState) {
         this.expandState = expandState;
     }
+
+
+    @Transient
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
         return "JntTreeNode{" +
