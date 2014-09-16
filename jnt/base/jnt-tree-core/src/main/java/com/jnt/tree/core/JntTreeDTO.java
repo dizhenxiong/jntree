@@ -13,7 +13,7 @@ public class JntTreeDTO implements Serializable {
 
     private static final long serialVersionUID = -7203343128718526734L;
 
-    public JntTreeDTO(){
+    public JntTreeDTO() {
 
     }
 
