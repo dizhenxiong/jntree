@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca-j/spring/200810"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://docs.oasis-open.org/ns/opencsa/sca-j/spring/200810 http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+    <context:component-scan base-package="com.jnt"/>
+    <bean id="dao" class="com.lenovo.vctl.dal.dao.impl.CompositeDaoImpl"/>
+
+    <sca:service name="JntPostRemoteService"
+                 type="com.jnt.post.service.remote.JntPostRemoteService"
+                 target="JntPostRemoteServiceBean">
+    </sca:service>
+    <bean id="JntPostRemoteServiceBean"
+          class="com.jnt.post.service.remote.impl.JntPostRemoteServiceImpl">
+    </bean>
+
+
+</beans>
+  

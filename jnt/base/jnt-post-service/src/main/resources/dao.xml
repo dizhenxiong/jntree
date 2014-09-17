@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="GB2312"?>
+<dal>
+    <default>
+        <dbStrategy name="" clazz="com.sohu.sns.dal.route.strategy.DefaultStrategy">
+            <pattern value="[0-9A-Za-z]$" group="g1"/>
+        </dbStrategy>
+        <listenerClass className=""/>
+        <idCenterDS ds="idCenterDS"/>
+        <!-- 缺省IdCenter使用的数据源配置 -->
+    </default>
+    <route>
+
+        <object name="com.jnt.post.core.JntPost" listenerClass="" strategyProperty="treeId">
+            <list name="POST_ID_LIST_PARENT"
+                  sqlitem="select id from post  where parent_id=? order by create_at desc"
+                  sqlType="hsql" keyProperty="parentId" valueProperty="id" update="true"/>
+            <dbStrategy name="" clasz="com.lenovo.vctl.dal.dao.route.strategy.DefaultStrategy">
+                <pattern value="[0-9A-Za-z]$" group="g1"/>
+            </dbStrategy>
+        </object>
+    </route>
+</dal>
