@@ -47,6 +47,8 @@ public class JntPost implements Serializable {
 
     private String workLifeStr;  //工作年限的字符串  如 0 ~ 3 年
 
+    private Long createAt;
+
     public JntPost() {
 
     }
@@ -69,15 +71,6 @@ public class JntPost implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Column(name = "descs")
-    public String getDesc() {
-        return descs;
-    }
-
-    public void setDesc(String desc) {
-        this.descs = desc;
     }
 
     @Column(name = "abbr")
@@ -121,6 +114,15 @@ public class JntPost implements Serializable {
         return salaryMax;
     }
 
+    @Column(name = "descs")
+    public String getDescs() {
+        return descs;
+    }
+
+    public void setDescs(String descs) {
+        this.descs = descs;
+    }
+
     public void setSalaryMax(Long salaryMax) {
         this.salaryMax = salaryMax;
     }
@@ -133,6 +135,17 @@ public class JntPost implements Serializable {
     public void setWorkLifeStr(String workLifeStr) {
         this.workLifeStr = workLifeStr;
     }
+
+
+    @Column(name = "create_at")
+    public Long getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Long createAt) {
+        this.createAt = createAt;
+    }
+
 
     @Override
     public String toString() {

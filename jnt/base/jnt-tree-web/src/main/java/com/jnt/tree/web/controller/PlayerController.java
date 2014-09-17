@@ -36,14 +36,6 @@ public class PlayerController {
 //        this.jntTreeRemoteService = jntTreeRemoteService;
 //    }
 
-    /**
-     * 玩家登入
-     *
-     * @param request
-     * @param response
-     * @return
-     * @throws Exception
-     */
 
     @RequestMapping(method = RequestMethod.GET, value = "/player/tree/{id}")
     public String tree(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -66,11 +58,10 @@ public class PlayerController {
 //    }
 
 
+
+
     public String writeConent(PrintWriter writer, JntTreeDTO jntTree) {
-
         Gson gson = new Gson();
-
-
         JsonGenerator generator = null;
         // First: need a custom serializer provider
 //        StdSerializerProvider sp = new StdSerializerProvider();
