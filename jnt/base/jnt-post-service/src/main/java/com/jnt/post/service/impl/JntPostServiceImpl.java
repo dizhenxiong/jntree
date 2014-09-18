@@ -13,7 +13,9 @@ import java.util.List;
 /**
  * Created by arthur on 14-9-17.
  */
+
 @Component("jntPostService")
+
 public class JntPostServiceImpl extends DalBaseServiceImpl<JntPost> implements JntPostService<JntPost> {
 
     @Override
@@ -23,13 +25,16 @@ public class JntPostServiceImpl extends DalBaseServiceImpl<JntPost> implements J
 
     @Override
     public List<JntPost> getListByParentId(Long parentId, int start, int count) throws Exception {
+
         List<JntPost> jntPosts = new ArrayList<JntPost>();
+
         List<Long> idLs = getIdList(PostConstants.POST_ID_LIST_PARENT, new Object[]{parentId}, start, count, true);
+
         if (CollectionUtils.isNotEmpty(idLs)) {
             jntPosts = getObjectList(idLs);
         }
-
         return null;
     }
+
 
 }
